@@ -1,0 +1,14 @@
+FROM centos:centos7
+MAINTAINER Chris O'Meara
+
+RUN yum update -y && yum install -y epel-release && yum install -y nginx && yum clean all
+
+COPY index.html /usr/local/share/cws-parent-portal-ui/index.html
+COPY nginx.conf /usr/local/etc/cws-parent-portal-ui/nginx.conf
+
+VOLUME /var/log/cws-parent-portal-ui
+
+EXPOSE 8080
+
+ENTRYPOINT [ "nginx", "-c", "/usr/local/etc/cws-parent-portal-ui/nginx.conf" ]
+
