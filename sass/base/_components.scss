@@ -1,0 +1,77 @@
+.circle-img{
+  width: 60px;
+  height:60px;
+  border-radius: 50%;
+  overflow: hidden;
+  img{
+    width:100%;
+    height:100%;
+  }
+  &.circle-img-lg{
+    width:140px;
+    height:140px;
+  }
+  &.circle-img-md{
+    width:90px;
+    height:90px;
+  }
+  &.circle-img-xs{
+    width:40px;
+    height:40px;
+  }
+}
+.form-group{
+  position: relative;
+  label{
+    margin-bottom: 0;
+    font-weight: 400;
+  }
+  .form-control-feedback{
+    line-height: 50px;
+    height:50px;
+    top:20px !important;
+  }
+  .form-control{
+    height:50px;
+    border: none;
+    background: $BrightGray;
+    border-bottom:1px solid $Primary;
+    border-radius: 0;
+    box-shadow: none;
+    &[disabled]{
+      background: lighten($Gray, 20);
+    }
+    &:focus{
+      box-shadow: none !important;
+    }
+  }
+  textarea{
+    min-height:100px;
+    resize:vertical;
+  }
+
+  &.has-success{
+    .form-control{
+      background: lighten($Success, 45);
+      border-bottom:1px solid $Success;
+    }
+  }
+  &.has-danger{
+    .form-control{
+      background: lighten($Danger, 30);
+      border-bottom:1px solid $Danger;
+    }
+  }
+  &.has-warning{
+    .form-control{
+      background: lighten($Warning, 30);
+      border-bottom:1px solid $Warning;
+    }
+  }
+
+}
+.well{
+  background: $Default;
+  border: none;
+  border-radius: 0;
+}
