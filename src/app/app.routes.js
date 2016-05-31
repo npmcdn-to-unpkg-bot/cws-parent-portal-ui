@@ -1,6 +1,15 @@
 var app = angular.module('cws', ['ui.router']);
 
-app.config(['$stateProvider','$urlRouterProvider','USER_ROLES',function($stateProvider, $urlRouterProvider,USER_ROLES){
+app.controller('cwsMainCtrl', ['$scope','AUTH_EVENTS', function ($scope,AUTH_EVENTS) {
+
+    $scope.$on(AUTH_EVENTS.notAuthorized, function(event) {
+        console.log("You are not allowed to access this resource.");
+        alert("You are not allowed to access this resource.");
+    });
+    
+}]);
+
+app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider){
 
     $stateProvider
         .state('main',{

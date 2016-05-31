@@ -1,4 +1,4 @@
-angular.module('cws').controller('loginController', ['$scope','$state','AuthService', function($scope,$state, AuthService){
+angular.module('cws').controller('loginController', ['$scope','$state','User', function($scope,$state, User){
     
 
 
@@ -6,7 +6,7 @@ angular.module('cws').controller('loginController', ['$scope','$state','AuthServ
 
 
     $scope.login = function(data) {
-        AuthService.login(data.username, data.password).then(function(authenticated) {
+        User.login(data.username, data.password).then(function(authenticated) {
             $state.go('home', {}, {reload: true});
             // $scope.setCurrentUsername(data.username);
         }, function(err) {

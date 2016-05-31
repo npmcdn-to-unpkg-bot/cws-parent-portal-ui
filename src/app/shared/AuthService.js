@@ -1,10 +1,9 @@
 angular.module('cws')
 
-    .service('AuthService', function($rootScope, $q, $http, USER_ROLES, API_LINKS) {
+    .service('AuthService', ['$rootScope','$q','$http','API_LINKS', function($rootScope, $q, $http, API_LINKS) {
         var LOCAL_TOKEN_KEY = 'CWS-Key';
         var username = '';
         var isAuthenticated = false;
-        var role = '';
         var authToken;
 
         function loadUserCredentials() {
@@ -26,13 +25,7 @@ angular.module('cws')
             isAuthenticated = true;
             authToken = token;
 
-            if (token) {
-                role = USER_ROLES.user
-            }else{
-                role = USER_ROLES.public
-            }
-
-            // Set the token as header for your requests!
+            // Set the token as header for requests!
             $http.defaults.headers.common['X-Auth-Token'] = token;
         }
 
@@ -44,57 +37,24 @@ angular.module('cws')
             window.localStorage.removeItem(LOCAL_TOKEN_KEY);
         }
 
-        var login = function(email, pw) {
-
-
-            return $q(function(resolve, reject) {
-
-
-
-                $http.post(API_LINKS.baseurl + '/auth' ,{'email':email, 'password': pw})
-                    .then(function(res, status) {
-                            if (res.data.success == true){
-                                storeUserCredentials(res.data.token);
-                                resolve('Login success.');
-                            }else{
-                                reject('Login Failed.');
-                            }
-
-                        },
-                        function(){
-                            reject('Login Failed.');
-                        });
-
-
-
-            });
-        };
 
         var logout = function() {
             destroyUserCredentials();
         };
 
-        var isAuthorized = function(authorizedRoles) {
-            if (!angular.isArray(authorizedRoles)) {
-                authorizedRoles = [authorizedRoles];
-            }
-            return (isAuthenticated && authorizedRoles.indexOf(role) !== -1);
-        };
-
         loadUserCredentials();
 
         return {
-            login: login,
+            storeUserCredentials: storeUserCredentials,
             setCurrentUsername: setCurrentUsername,
             logout: logout,
-            isAuthorized: isAuthorized,
             isAuthenticated: function() {return isAuthenticated;},
-            username: function() {return username;},
-            role: function() {return role;}
-        };
-    })
+            username: function() {return username;}
 
-    .factory('AuthInterceptor', function ($rootScope, $q, AUTH_EVENTS) {
+        };
+    }])
+
+    .factory('AuthInterceptor', ['$rootScope','$q','AUTH_EVENTS',function ($rootScope, $q, AUTH_EVENTS) {
         return {
             responseError: function (response) {
                 $rootScope.$broadcast({
@@ -104,8 +64,8 @@ angular.module('cws')
                 return $q.reject(response);
             }
         };
-    })
+    }])
 
-    .config(function ($httpProvider) {
+    .config(['$httpProvider',function ($httpProvider) {
         $httpProvider.interceptors.push('AuthInterceptor');
-    });
+    }]);
