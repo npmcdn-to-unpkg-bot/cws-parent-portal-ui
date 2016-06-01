@@ -3,6 +3,7 @@
   $Xdesktop : "(min-width: 1468px)";
   $desktop  : "(min-width: 1168px)";
   $tablet   : "(min-width: 990px)";
+  $maxtablet:"(max-width: 990px)";
   $mobile   : "(min-width: 768px)";
 
   @if $size == Xdesktop {
@@ -22,6 +23,11 @@
   }
   @else if $size == mobile {
     @media only screen and #{$mobile} {
+      @content;
+    }
+  }
+  @else if $size == maxtablet {
+    @media only screen and #{$maxtablet} {
       @content;
     }
   }

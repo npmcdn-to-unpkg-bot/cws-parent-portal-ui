@@ -69,7 +69,7 @@ gulp.task('serve', ['style','minify'], function () {
         logPrefix: 'CWS Development',
         server: ['src']
     });
-    gulp.watch(['src/*.html'], reload);
+    gulp.watch(['src/**/*.html'], reload);
     gulp.watch(['src/app/*.*'], reload);
     gulp.watch(['src/app/**/*.*'], ['minify', reload]);
     gulp.watch(['sass/*.*'], ['style', reload]);

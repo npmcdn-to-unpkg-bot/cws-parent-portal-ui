@@ -6,6 +6,7 @@
   img{
     width:100%;
     height:100%;
+    display: block;
   }
   &.circle-img-lg{
     width:140px;
@@ -74,4 +75,68 @@
   background: $Default;
   border: none;
   border-radius: 0;
+  &.well-lg{
+    //padding:10px;
+    //@include screen('tablet') {
+    //  padding:20px;
+    //}
+  }
+}
+.fieldset{
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $BorderGray;
+}
+.dropdown-menu{
+  li{
+    a{
+      padding:10px;
+      border-bottom: 1px solid $BorderGray;
+      color: inherit;
+    }
+    &:last-child{
+      a{
+        border-bottom:none;
+      }
+
+    }
+  }
+}
+.nav-tabs{
+  border-bottom: 1px solid $BorderGray;
+  margin-bottom: 20px;
+  &.tabs-right{
+    li{
+      float: right;
+      a{
+        background: none;
+        font-size:16px;
+        border: none;
+        //margin-right: 0 !important;
+        text-transform: uppercase;
+        border-bottom: 3px solid $BorderGray;
+        color: $Gray;
+        &:hover, &:focus{
+          border: none;
+          border-bottom: 3px solid $BorderGray;
+          background: none ;
+        }
+
+      }
+      &.active a{
+        color: $Primary;
+        border: none;
+
+        //font-weight: 600;
+        border-bottom: 3px solid $Primary;
+
+
+      }
+    }
+  }
+}
+.nav-pills{
+
 }

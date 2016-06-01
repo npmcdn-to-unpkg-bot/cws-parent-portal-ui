@@ -1,11 +1,8 @@
 var app = angular.module('cws', ['ui.router']);
 
-app.controller('cwsMainCtrl', ['$scope','AUTH_EVENTS', function ($scope,AUTH_EVENTS) {
+app.controller('cwsMainCtrl', ['$scope','AUTH_EVENTS','$state', function ($scope,AUTH_EVENTS,$state) {
 
-    $scope.$on(AUTH_EVENTS.notAuthorized, function(event) {
-        console.log("You are not allowed to access this resource.");
-        alert("You are not allowed to access this resource.");
-    });
+
     
 }]);
 
@@ -15,7 +12,8 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         .state('main',{
             templateUrl: 'app/shared/main/main.html',
             abstract:true,
-            controller: 'mainController'
+            controller: 'mainController',
+            controllerAs: 'mainvm'
         })
         .state('logging',{
             templateUrl: 'app/components/logging/logging.html',
@@ -37,6 +35,12 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             authenticate: false
 
         })
+        .state('createprofile',{
+            templateUrl: 'app/components/createprofile/createProfile.html',
+            url: '/create-profile',
+            controller: 'createProfileController',
+            authenticate: false
+        })
         .state('home',{
             parent:'main',
             url:'/home',
@@ -44,13 +48,17 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             controller:'homeController',
             authenticate: true
         })
-        .state('work',{
+        .state('fosterAgency',{
             parent:'main',
-            url:'/work',
-            templateUrl:'app/components/work/workView.html',
-            controller: 'workController',
+            url:'/foster-agency',
+            templateUrl:'app/components/fosterAgency/fosterAgency.html',
+            controller: 'fosterAgencyController',
             authenticate: true
         });
 
-    $urlRouterProvider.otherwise('/home');
+    // $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise(function($injector, $location){
+        var $state = $injector.get("$state");
+        $state.go('home');
+    });
 }]);

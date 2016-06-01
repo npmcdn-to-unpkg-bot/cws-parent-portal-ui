@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img src="asset/img/logo.png" alt=""></a>
+        </div>
+
+        <ul class="nav cws-navbar">
+            <li ng-if="!user"><a href="#/login" ui-sref="logging.login">Have an account? <span class="primary">Login here</span></a></li>
+            <li ng-if="user">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div class="circle-img circle-img-xs">
+                        <img ng-src="{{user.image}}" alt="{{user.name}}">
+                    </div>
+                    {{user.name}}
+                    <i class="icon-caret-down"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href=""><i class="icon-cog"></i> Edit Profile</a></li>
+                    <li><a href="#"><i class="icon-support"></i> Help</a></li>
+                    <li><a href="#"><i class="icon-sign-out"></i> Log out</a></li>
+                </ul>
+
+            </li>
+        </ul>
+
+    </div><!-- /.container -->
+</nav>
