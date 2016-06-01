@@ -7,14 +7,15 @@ angular.module('cws').directive('cwsNav', ['AuthService','$state',function(AuthS
         replace: true,
         templateUrl: 'app/shared/nav/navView.html',
         link: function(scope, elem, attrs){
-
             scope.logout = function(){
                 AuthService.logout();
-                $state.go('logging.login');
+                $state.go('logging.login', {}, {reload: true});
             };
 
-
-
+            scope.showMsgSidebar = function () {
+                $(".sidebar").toggleClass('active');
+            }
+            
 
         }
     }

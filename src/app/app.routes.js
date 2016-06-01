@@ -11,6 +11,7 @@ app.controller('cwsMainCtrl', ['$scope','AUTH_EVENTS','$state', function ($scope
 }]);
 
 app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider){
+    $urlRouterProvider.when('/messages', '/messages/inbox');
 
     $stateProvider
         .state('main',{
@@ -45,11 +46,39 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             controller: 'createProfileController',
             authenticate: false
         })
-        .state('home',{
+        .state('messages',{
             parent:'main',
-            url:'/home',
-            templateUrl:'app/components/home/homeView.html',
-            controller:'homeController',
+            url:'/messages',
+            templateUrl:'app/components/messages/messagesView.html',
+            controller:'messagesController',
+            authenticate: true
+        })
+        .state('messages.inbox',{
+            parent:'messages',
+            url:'/inbox',
+            templateUrl:'app/components/messages/inbox/inbox.html',
+            controller:'inboxController',
+            authenticate: true
+        })
+        .state('messages.sent',{
+            parent:'messages',
+            url:'/sent',
+            templateUrl:'app/components/messages/sent/sent.html',
+            controller:'sentController',
+            authenticate: true
+        })
+        .state('messages.newmessage',{
+            parent:'messages',
+            url:'/new-message',
+            templateUrl:'app/components/messages/newMessage/newMessage.html',
+            controller:'newMessageController',
+            authenticate: true
+        })
+        .state('messages.single',{
+            parent:'messages',
+            url:'/:id',
+            templateUrl:'app/components/messages/single/single.html',
+            controller:'singleController',
             authenticate: true
         })
         .state('fosterAgency',{
@@ -63,6 +92,6 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
     // $urlRouterProvider.otherwise('/home');
     $urlRouterProvider.otherwise(function($injector, $location){
         var $state = $injector.get("$state");
-        $state.go('home');
+        $state.go('messages.inbox');
     });
 }]);

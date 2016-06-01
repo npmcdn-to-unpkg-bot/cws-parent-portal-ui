@@ -137,6 +137,97 @@
     }
   }
 }
-.nav-pills{
+.sidebar{
+  overflow: hidden;
+  @include screen('maxtablet') {
+    position: fixed;
+    top: 50px;
+    left: -320px;
+    //left: -100vw;
+    width: 260px;
+    height: 100%;
+    z-index: 2;
+    transition: all 0.3s;
+  }
 
+    &:after{
+      content: '';
+      position: absolute;
+      left:0;
+      top:0;
+      background: transparentize($Dark, 0.05);
+      z-index:-1;
+      width:100vw;
+      height: 100%;
+      opacity:0;
+      transition: all 0.3s;
+
+    }
+
+  &.active{
+    &:after {
+      @include screen('maxtablet') {
+        opacity: 1;
+      }
+    }
+    @include screen('maxtablet') {
+      transition: all 0.3s;
+      left:-20px;
+    }
+  }
+
+  .well{
+    height:100%;
+    .nav-pills{
+      li{
+        a{
+          border-radius: 0;
+          font-size: 18px;
+          color: inherit;
+        }
+        &.active{
+          a{
+            background: none;
+            color: $Dark;
+            font-weight: 400;
+            border-left:2px solid $Primary;
+
+          }
+        }
+      }
+    }
+  }
+
+}
+a.user-id, .user-id{
+
+    font-size: 16px;
+    color:$Gray;
+    border-radius: 0;
+    &.has-image{
+      line-height: 40px;
+      .circle-img{
+        margin-right: 10px;
+      }
+    }
+
+}
+.sec-title{
+  hr{
+    margin:5px 0;
+
+  }
+  h4{
+    padding-top: 5px;
+  }
+  .btn{
+    margin-bottom: 0;
+    padding-top: 0;
+
+    font-size:18px;
+    i{
+      line-height: 40px;
+    }
+
+  }
 }

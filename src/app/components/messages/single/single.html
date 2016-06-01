@@ -1,0 +1,34 @@
+<div class="single-message">
+    <div class="sec-title">
+        <h4 class="pull-left primary">{{mail.subject}}</h4>
+        <a href="#" class="btn btn-default btn-wide btn-sm pull-right"><i class="icon-print"></i></a>
+        <div class="clearfix"></div>
+        <hr>
+    </div>
+
+
+    <div class="message-body" ng-repeat="message in mail.messages">
+        <div class="message-body-meta">
+            <div class="user-id">
+                <div class="circle-img circle-img-xs pull-left">
+                    <img ng-src="https://dl.dropboxusercontent.com/u/99892820/female-users/women29-photo-by-Nathan-O'Nions.jpg" alt="">
+                </div>
+                {{message.author}}
+            </div>
+            <p class="sm date">{{message.data_created}}</p>
+            <div class="clearfix"></div>
+        </div>
+        <div class="message-content">
+            <p>{{message.content}}</p>
+        </div>
+    </div>
+
+    <div class="reply-form">
+        <textarea class="form-control" id="reply" placeholder="Type to reply" ></textarea>
+        <div class="reply-btns">
+            <a href="javascript:void(0)" class="btn btn-default pull-left"><i class="icon-paperclip"></i> Attach a file</a>
+            <a href="javascript:void(0)" class="btn btn-primary pull-right">Reply</a>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

@@ -60,3 +60,19 @@
     }
   }
 }
+.sidebar-btn{
+  font-size:18px;
+  color: $Dark;
+  background: $BorderGray;
+  &:hover{
+    background: $Primary;
+    color: $Default;
+  }
+  &:focus, &:active{
+    outline: none;
+    box-shadow: none;
+  }
+  @include screen('tablet') {
+    display: none;
+  }
+}

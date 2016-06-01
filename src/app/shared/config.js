@@ -11,7 +11,7 @@ angular.module('cws')
                 console.log("Not authenticated");
             }else if(!next.authenticate && AuthService.isAuthenticated()){
                 event.preventDefault();
-                $state.go('home', {}, {reload: true});
+                $state.go('messages', {}, {reload: true});
                 console.log("authenticated");
 
             }
