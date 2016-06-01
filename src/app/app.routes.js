@@ -2,6 +2,10 @@ var app = angular.module('cws', ['ui.router']);
 
 app.controller('cwsMainCtrl', ['$scope','AUTH_EVENTS','$state', function ($scope,AUTH_EVENTS,$state) {
 
+    $scope.$on(AUTH_EVENTS.notAuthorized, function(event) {
+        console.log("You are not allowed to access this resource.");
+        alert("You are not allowed to access this resource.");
+    });
 
     
 }]);

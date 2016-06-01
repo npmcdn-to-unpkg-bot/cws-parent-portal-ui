@@ -40,6 +40,7 @@ angular.module('cws')
 
         var logout = function() {
             destroyUserCredentials();
+
         };
 
         loadUserCredentials();
