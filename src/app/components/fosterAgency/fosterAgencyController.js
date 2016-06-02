@@ -1,4 +1,4 @@
-angular.module('cws').controller('fosterAgencyController', ['$scope','$rootScope',function($scope,$rootScope){
+angular.module('cws').controller('fosterAgencyController', ['$scope',function($scope){
     $scope.fosterAgencies = [
         {
             facility_name: 'FUTURO INFANTIL HISPANO',

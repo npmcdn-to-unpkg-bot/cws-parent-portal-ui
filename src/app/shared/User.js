@@ -2,7 +2,7 @@
  * Created by Husamui on 5/31/16.
  */
 angular.module('cws')
-    .service('User', ['AuthService','$q','$http','API_LINKS', function(AuthService, $q, $http, API_LINKS) {
+    .service('User', ['AuthService','$q','$http','API_LINKS', function(AuthService, $q, $http, API_LINKS, $resource) {
 
         var login = function(email, pw) {
             return $q(function(resolve, reject) {
@@ -23,8 +23,14 @@ angular.module('cws')
         };
 
 
+
+
+
+
+
         return {
             login: login
+
         }
 
 

@@ -53,6 +53,13 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             controller:'messagesController',
             authenticate: true
         })
+        .state('editprofile',{
+            // parent:'main',
+            url:'/profile',
+            templateUrl:'app/components/editprofile/editProfile.html',
+            controller:'editProfileController',
+            authenticate: true
+        })
         .state('messages.inbox',{
             parent:'messages',
             url:'/inbox',
@@ -77,8 +84,8 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         .state('messages.single',{
             parent:'messages',
             url:'/:id',
-            templateUrl:'app/components/messages/single/single.html',
-            controller:'singleController',
+            templateUrl:'app/components/messages/single/singleMessage.html',
+            controller:'singleMessageController',
             authenticate: true
         })
         .state('fosterAgency',{
@@ -86,6 +93,13 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             url:'/foster-agency',
             templateUrl:'app/components/fosterAgency/fosterAgency.html',
             controller: 'fosterAgencyController',
+            authenticate: true
+        })
+        .state('fosterAgency.single',{
+            parent:'fosterAgency',
+            url:'/foster-agency/:id',
+            templateUrl:'app/components/fosterAgency/singleAgency.html',
+            controller: 'singleAgencyController',
             authenticate: true
         });
 
