@@ -5,4 +5,26 @@
         <div class="clearfix"></div>
         <hr>
     </div>
+    <div class="foster-agency-container" ng-repeat="fosterAgency in fosterAgencies">
+        <div class="number-container pull-left">
+            <div class="number-circle">
+                <div class="height_fix"></div>
+                <div class="content">{{$index+1}}</div>
+            </div>
+        </div>
+        <div class="address-container pull-left">
+            <span class="agency-title">{{ fosterAgency.facility_name }}</span>
+            <br/>
+            {{ fosterAgency.facility_type }}
+            <br/>
+            {{ fosterAgency.location_address }},
+            {{ fosterAgency.location_city }},
+            {{ fosterAgency.location_state }},
+            {{ fosterAgency.location_zip }}
+            <br/>
+            {{ fosterAgency.facility_telephone_number }}
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+    </div>
 </div>
