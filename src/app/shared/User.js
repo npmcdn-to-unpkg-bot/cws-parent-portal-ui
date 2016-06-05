@@ -7,7 +7,7 @@ angular.module('cws')
 
         user.login = function(email, pw) {
             return $q(function(resolve, reject) {
-                $http.post(API_LINKS.baseurl + 'auth' ,{'email':email, 'password': pw})
+                $http.post(API_LINKS.baseurl + 'session' ,{'email':email, 'password': pw})
                     .then(function(res, status) {
                             if (res.data.success == true){
                                 AuthService.storeUserCredentials(res.data.token);
