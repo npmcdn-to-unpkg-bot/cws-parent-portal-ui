@@ -9,7 +9,7 @@ angular.module('cws').directive('cwsNav', ['AuthService','$state',function(AuthS
         link: function(scope, elem, attrs){
             scope.logout = function(){
                 AuthService.logout();
-                $state.go('logging.login', {}, {reload: true});
+                window.location = '/'
             };
 
             scope.showMsgSidebar = function () {

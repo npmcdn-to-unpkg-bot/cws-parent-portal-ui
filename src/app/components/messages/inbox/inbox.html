@@ -6,21 +6,11 @@
 </div>
 
 <div class="list-group list-group-custom inbox-list">
-
-    <a href="javascript:void(0);" ui-sref="messages.single({id: 1})" class="list-group-item new">
-        <h6 class="list-group-item-heading">Jane Doo <small class="time">10:00pm</small></h6>
-        <p>We believe in providing the highest quality service, </p>
-        <p class="sm">the safest working environment, the most competitive cost.</p>
-    </a>
-    <a href="javascript:void(0);" class="list-group-item">
-        <h6 class="list-group-item-heading">Jane Doo <small class="time">10:00pm</small></h6>
-        <p>We believe in providing the highest quality service, </p>
-        <p class="sm">the safest working environment, the most competitive cost.</p>
-    </a>
-    <a href="javascript:void(0);" class="list-group-item">
-        <h6 class="list-group-item-heading">Jane Doo <small class="time">10:00pm</small></h6>
-        <p>We believe in providing the highest quality service, </p>
-        <p class="sm">the safest working environment, the most competitive cost.</p>
+    <h5 class="text-center" ng-if="!conversations.length > 0">No Messages Found</h5>
+    <a ng-repeat="conversation in conversations" href="#/messages/{{conversation._id}}" ui-sref="messages.single({id: conversation._id })" class="list-group-item new">
+        <h6 class="list-group-item-heading">{{getSender(conversation)}}<small class="time">{{conversation.date | date: 'yyyy-MMM-dd h:mma' }}</small></h6>
+        <p>{{conversation.subject}}</p>
+        <p class="sm">{{conversation.init_message | limitTo: 80}}</p>
     </a>
 
 </div>

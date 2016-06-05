@@ -2,7 +2,6 @@ angular.module('cws')
 
     .service('AuthService', ['$rootScope','$q','$http','API_LINKS', function($rootScope, $q, $http, API_LINKS) {
         var LOCAL_TOKEN_KEY = 'CWS-Key';
-        var username = '';
         var isAuthenticated = false;
         var authToken;
 
@@ -12,10 +11,6 @@ angular.module('cws')
                 useCredentials(token);
             }
         }
-        function setCurrentUsername(user){
-            username = user;
-        }
-
         function storeUserCredentials(token) {
             window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
             useCredentials(token);
@@ -47,11 +42,8 @@ angular.module('cws')
 
         return {
             storeUserCredentials: storeUserCredentials,
-            setCurrentUsername: setCurrentUsername,
             logout: logout,
-            isAuthenticated: function() {return isAuthenticated;},
-            username: function() {return username;}
-
+            isAuthenticated: function() {return isAuthenticated;}
         };
     }])
 

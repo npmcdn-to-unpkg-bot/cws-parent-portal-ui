@@ -8,8 +8,12 @@
 
   position: relative;
 
-
+  .messages-wrapper{
+    max-height: 380px;
+    overflow: scroll;
+  }
   .message-body{
+    margin-bottom: 20px;
     .message-body-meta{
       position: relative;
       //margin-bottom: 10px;

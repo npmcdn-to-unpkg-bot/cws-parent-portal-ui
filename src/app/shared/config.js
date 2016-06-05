@@ -5,7 +5,7 @@ angular.module('cws')
             if (next.authenticate && !AuthService.isAuthenticated()){
                 // User isn’t authenticated
                 event.preventDefault();
-                // $state.go("logging.login");
+                // $state.go("authentication.login");
                 $state.go('logging.login', {}, {reload: true});
                 // $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
                 console.log("Not authenticated");

@@ -1,34 +1,54 @@
 <div class="single-message">
     <div class="sec-title">
-        <h4 class="pull-left primary">{{mail.subject}}</h4>
+        <h4 class="pull-left primary">{{conversation.subject}}</h4>
         <a href="#" class="btn btn-default btn-wide btn-sm pull-right"><i class="icon-print"></i></a>
         <div class="clearfix"></div>
         <hr>
     </div>
 
-
-    <div class="message-body" ng-repeat="message in mail.messages">
-        <div class="message-body-meta">
-            <div class="user-id">
-                <div class="circle-img circle-img-xs pull-left">
-                    <img ng-src="https://dl.dropboxusercontent.com/u/99892820/female-users/women29-photo-by-Nathan-O'Nions.jpg" alt="">
+    <div class="messages-wrapper">
+        <div class="message-body">
+            <div class="message-body-meta">
+                <div class="user-id">
+                    <div class="circle-img circle-img-xs pull-left">
+                        <img ng-src="{{conversation.image}}" src="http://khns.org/wp-content/uploads/2014/07/profile-icon-400x380.png" alt="">
+                    </div>
+                    {{conversation.initializer.name.first_name + " " + conversation.initializer.name.last_name}}
                 </div>
-                {{message.author}}
+                <p class="sm date">{{conversation.date | date: 'yyyy MMM dd h:MMa'}}</p>
+                <div class="clearfix"></div>
             </div>
-            <p class="sm date">{{message.data_created}}</p>
-            <div class="clearfix"></div>
+            <div class="message-content">
+                <p>{{conversation.init_message}}</p>
+            </div>
         </div>
-        <div class="message-content">
-            <p>{{message.content}}</p>
+
+        <div class="message-body" ng-repeat="message in conversation.messages">
+            <div class="message-body-meta">
+                <div class="user-id">
+                    <div class="circle-img circle-img-xs pull-left">
+                        <img ng-src="{{message.sender.image}}" src="http://khns.org/wp-content/uploads/2014/07/profile-icon-400x380.png" alt="">
+                    </div>
+                    {{message.sender.name.first_name + " " + message.sender.name.last_name}}
+                </div>
+                <p class="sm date">{{message.date | date: 'yyyy MMM dd h:MMa'}}</p>
+                <div class="clearfix"></div>
+            </div>
+            <div class="message-content">
+                <p>{{message.content}}</p>
+            </div>
         </div>
+
     </div>
 
     <div class="reply-form">
-        <textarea class="form-control" id="reply" placeholder="Type to reply" ></textarea>
-        <div class="reply-btns">
-            <a href="javascript:void(0)" class="btn btn-default pull-left"><i class="icon-paperclip"></i> Attach a file</a>
-            <a href="javascript:void(0)" class="btn btn-primary pull-right">Reply</a>
-            <div class="clearfix"></div>
-        </div>
+        <form ng-submit="reply(replymessage)">
+            <textarea class="form-control" id="reply" placeholder="Type to reply" ng-model="replymessage.content"></textarea>
+            <div class="reply-btns">
+                <a href="javascript:void(0)" class="btn btn-default pull-left"><i class="icon-paperclip"></i> Attach a file</a>
+                <input type="submit" class="btn btn-primary pull-right" value="Reply">
+                <div class="clearfix"></div>
+            </div>
+        </form>
     </div>
 </div>

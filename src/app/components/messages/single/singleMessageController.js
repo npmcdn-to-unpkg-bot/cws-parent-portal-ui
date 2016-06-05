@@ -1,31 +1,35 @@
 /**
  * Created by Husamui on 6/1/16.
  */
-angular.module('cws').controller('singleMessageController', ['$scope','$stateParams',function($scope, $stateParams){
+angular.module('cws').controller('singleMessageController', ['$scope','$stateParams','Conversation','Message','User',function($scope, $stateParams,Conversation,Message,User){
 
-    $scope.id = $stateParams.id;
+    $(".loading").addClass('active');
 
-    // var message =
-    $scope.mail = {
-        id: 1,
-        subject: 'Hello World',
-        messages: [
+    $scope.conversation = Conversation.resource.get({id: $stateParams.id}, function(){
+        if(User.data._id != $scope.conversation.sender._id){
+            $scope.replymessage.receiver = $scope.conversation.sender._id;
+        }
+        $(".loading").removeClass('active');
 
-            {
-                author: 'Jane Doo',
-                author_image: 'url',
-                data_created: '01/02/2016',
-                content: 'This is all the message content'
-            },
+    });
+    
+    $scope.replymessage = new Message.resource();
+    $scope.replymessage.conversation_id = $stateParams.id;
 
-            {
-                author: 'Husam',
-                author_image: 'url',
-                data_created: '01/02/2016',
-                content: 'This is all the message content 2'
-            }
-        ]
-    };
+
+    $scope.reply = function(){
+        console.log($scope.replymessage);
+        Message.resource.save($scope.replymessage, function(res){
+           if(res.success){
+               res.message.sender = User.data;
+               $scope.conversation.messages.push(res.message);
+               $scope.replymessage = new Message.resource();
+               console.log(res);
+           }
+        });
+    }
+
+
     
 
 }]);

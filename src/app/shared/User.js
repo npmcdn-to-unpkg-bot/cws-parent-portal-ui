@@ -2,15 +2,17 @@
  * Created by Husamui on 5/31/16.
  */
 angular.module('cws')
-    .service('User', ['AuthService','$q','$http','API_LINKS', function(AuthService, $q, $http, API_LINKS, $resource) {
+    .factory('User', ['AuthService','$q','$http','API_LINKS','$resource', function(AuthService, $q, $http, API_LINKS,$resource) {
+        var user = {};
 
-        var login = function(email, pw) {
+        user.login = function(email, pw) {
             return $q(function(resolve, reject) {
-                $http.post(API_LINKS.baseurl + '/auth' ,{'email':email, 'password': pw})
+                $http.post(API_LINKS.baseurl + 'auth' ,{'email':email, 'password': pw})
                     .then(function(res, status) {
                             if (res.data.success == true){
                                 AuthService.storeUserCredentials(res.data.token);
                                 resolve('Login success.');
+                                user.data = user.resource.get({ id: 'current' });
                             }else{
                                 reject('Login Failed.');
                             }
@@ -18,20 +20,27 @@ angular.module('cws')
                         function(){
                             reject('Login Failed.');
                         });
-
             });
         };
 
 
+        user.resource = $resource(API_LINKS.baseurl+'users/:id', { id: '@id' }, {
+            update: {
+                method: 'PUT' // this method issues a PUT request
+            }
+        }, {
+            stripTrailingSlashes: false
+        });
 
-
-
-
-
-        return {
-            login: login
-
+        if(AuthService.isAuthenticated()){
+            user.data = user.resource.get({ id: 'current' });
         }
+
+
+
+
+
+        return user
 
 
         }]);

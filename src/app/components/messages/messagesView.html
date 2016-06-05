@@ -14,21 +14,13 @@
 
                 <ul class="nav nav-pills nav-stacked">
                     <li role="presentation"><a href="#">Alert</a></li>
-                    <li role="presentation">
+                    <li role="presentation" ng-repeat="worker in user.case_workers">
                         <a href="#" class="has-image user-id">
                             <div class="circle-img circle-img-xs pull-left">
-                                <img src="https://dl.dropboxusercontent.com/u/99892820/female-users/women29-photo-by-Nathan-O'Nions.jpg" alt="">
+                                <img ng-src="{{worker.image}}" alt="{{worker.name.first_name + worker.name.last_name }}">
                             </div>
-                            John Doo
+                            {{worker.name.first_name + " " +worker.name.last_name }}
 
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#" class="has-image user-id">
-                            <div class="circle-img circle-img-xs pull-left">
-                                <img src="https://dl.dropboxusercontent.com/u/99892820/female-users/women29-photo-by-Nathan-O'Nions.jpg" alt="">
-                            </div>
-                            John Doo
                         </a>
                     </li>
                 </ul>

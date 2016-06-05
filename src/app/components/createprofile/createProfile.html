@@ -13,14 +13,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label" for="fname">First Name</label>
-                    <input type="text" class="form-control" id="fname" placeholder="Enter your first name">
+                    <label class="control-label" for="fname" >First Name</label>
+                    <input type="text" class="form-control" id="fname" placeholder="Enter your first name" ng-model="user.name.first_name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label" for="lname">Last Name</label>
-                    <input type="text" class="form-control" id="lname" placeholder="Enter your last name">
+                    <input type="text" class="form-control" id="lname" placeholder="Enter your last name" ng-model="user.name.last_name">
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label" for="fname">Attention to or In Care of</label>
-                            <input type="text" class="form-control" id="fname" placeholder="Enter name">
+                            <input type="text" class="form-control" id="fname" placeholder="Enter name" ng-model="user.address.name">
                         </div>
                     </div>
                 </div>
@@ -43,19 +43,19 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label" for="fname">Street Address</label>
-                    <input type="text" class="form-control" id="fname" placeholder="Enter street address">
+                    <input type="text" class="form-control" id="fname" placeholder="Enter street address" ng-model="user.address.street_address">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label" for="fname">Street Address 2</label>
-                    <input type="text" class="form-control" id="fname" placeholder="Enter street address">
+                    <input type="text" class="form-control" id="fname" placeholder="Enter street address" ng-model="user.address.street_address2">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label" for="fname">State</label>
-                    <input type="text" class="form-control" id="fname" placeholder="Enter street address">
+                    <input type="text" class="form-control" id="fname" placeholder="Select Sate"  ng-model="user.address.state">
                 </div>
             </div>
             <div class="col-md-6">
@@ -63,13 +63,13 @@
                    <div class="col-sm-6">
                        <div class="form-group">
                            <label class="control-label" for="fname">City</label>
-                           <input type="text" class="form-control" id="fname" placeholder="Enter city">
+                           <input type="text" class="form-control" id="fname" placeholder="Enter city"  ng-model="user.address.city">
                        </div>
                    </div>
                    <div class="col-sm-6">
                        <div class="form-group">
                            <label class="control-label" for="fname">Zip Code</label>
-                           <input type="text" class="form-control" id="fname" placeholder="Enter zip code">
+                           <input type="text" class="form-control" id="fname" placeholder="Enter zip code"  ng-model="user.address.zip">
                        </div>
                    </div>
                </div>
@@ -86,7 +86,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label" for="fname">Email Address</label>
-                            <input type="text" class="form-control" id="fname" placeholder="Enter your email address">
+                            <input type="text" class="form-control" id="fname" placeholder="Enter your email address"  ng-model="user.email">
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label" for="lname">Set Password</label>
-                    <input type="text" class="form-control" id="lname" placeholder="Set Password">
+                    <input type="text" class="form-control" id="lname" placeholder="Set Password"  ng-model="user.password">
                 </div>
             </div>
             <div class="col-md-6">
@@ -106,7 +106,7 @@
             </div>
         </div>
 
-        <input type="submit" class="btn btn-primary pull-right shadow" value="Register">
+        <input type="submit" class="btn btn-primary pull-right shadow" value="Register" ng-click="register()">
         <div class="clearfix"></div>
 
     </div>

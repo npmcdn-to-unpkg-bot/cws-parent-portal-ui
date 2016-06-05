@@ -1,4 +1,4 @@
-var app = angular.module('cws', ['ui.router']);
+var app = angular.module('cws', ['ui.router','ngResource']);
 
 app.controller('cwsMainCtrl', ['$scope','AUTH_EVENTS','$state', function ($scope,AUTH_EVENTS,$state) {
 
@@ -21,19 +21,19 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             controllerAs: 'mainvm'
         })
         .state('logging',{
-            templateUrl: 'app/components/logging/logging.html',
+            templateUrl: 'app/components/authentication/authentication.html',
             abstract:true,
             controller: 'loggingController'
         })
         .state('logging.login',{
-            templateUrl: 'app/components/logging/login/login.html',
+            templateUrl: 'app/components/authentication/login/login.html',
             url: '/login',
             parent:'logging',
             controller: 'loginController',
             authenticate: false
         })
         .state('logging.forgotpass',{
-            templateUrl: 'app/components/logging/forgotpass/forgotpass.html',
+            templateUrl: 'app/components/authentication/forgotpass/forgotpass.html',
             url: '/forgot-password',
             parent:'logging',
             controller: 'forgotPassController',

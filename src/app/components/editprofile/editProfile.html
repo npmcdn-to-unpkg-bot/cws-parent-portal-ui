@@ -13,13 +13,13 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label" for="fname">First Name</label>
-                    <input type="text" class="form-control" id="fname" placeholder="Enter your first name" ng-model="user.first_name">
+                    <input type="text" class="form-control" id="fname" placeholder="Enter your first name" ng-model="user.name.first_name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label" for="lname">Last Name</label>
-                    <input type="text" class="form-control" id="lname" placeholder="Enter your last name" ng-model="user.last_name">
+                    <input type="text" class="form-control" id="lname" placeholder="Enter your last name" ng-model="user.name.last_name">
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
             </div>
         </div>
 
-        <input type="submit" class="btn btn-primary pull-right shadow" value="Update">
+        <input type="submit" class="btn btn-primary pull-right shadow" value="Update" ng-click="update()">
         <div class="clearfix"></div>
 
     </div>
