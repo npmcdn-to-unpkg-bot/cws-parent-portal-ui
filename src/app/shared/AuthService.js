@@ -26,12 +26,10 @@ angular.module('cws')
 
         function destroyUserCredentials() {
             authToken = undefined;
-            username = '';
             isAuthenticated = false;
             $http.defaults.headers.common['X-Auth-Token'] = undefined;
             window.localStorage.removeItem(LOCAL_TOKEN_KEY);
         }
-
 
         var logout = function() {
             destroyUserCredentials();
@@ -47,6 +45,7 @@ angular.module('cws')
         };
     }])
 
+    // will logout the user whenever we got 401 or 403 http responsive code from the server
     .factory('AuthInterceptor', ['$rootScope','$q','AUTH_EVENTS',function ($rootScope, $q, AUTH_EVENTS) {
         return {
             responseError: function (response) {

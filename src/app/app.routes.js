@@ -1,15 +1,4 @@
-var app = angular.module('cws', ['ui.router','ngResource']);
-
-app.controller('cwsMainCtrl', ['$scope','AUTH_EVENTS','$state', function ($scope,AUTH_EVENTS,$state) {
-
-    $scope.$on(AUTH_EVENTS.notAuthorized, function(event) {
-        console.log("You are not allowed to access this resource.");
-        alert("You are not allowed to access this resource.");
-    });
-
-    
-}]);
-
+var app = angular.module('cws');
 app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.when('/messages', '/messages/inbox');
 
@@ -20,22 +9,22 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             controller: 'mainController',
             controllerAs: 'mainvm'
         })
-        .state('logging',{
+        .state('authentication',{
             templateUrl: 'app/components/authentication/authentication.html',
             abstract:true,
-            controller: 'loggingController'
+            controller: 'authenticationController'
         })
-        .state('logging.login',{
+        .state('authentication.login',{
             templateUrl: 'app/components/authentication/login/login.html',
             url: '/login',
-            parent:'logging',
+            parent:'authentication',
             controller: 'loginController',
             authenticate: false
         })
-        .state('logging.forgotpass',{
+        .state('authentication.forgotpass',{
             templateUrl: 'app/components/authentication/forgotpass/forgotpass.html',
             url: '/forgot-password',
-            parent:'logging',
+            parent:'authentication',
             controller: 'forgotPassController',
             authenticate: false
 
@@ -102,9 +91,8 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             controller: 'singleAgencyController',
             authenticate: true
         });
-
-    // $urlRouterProvider.otherwise('/home');
-    $urlRouterProvider.otherwise(function($injector, $location){
+    
+    $urlRouterProvider.otherwise(function($injector){
         var $state = $injector.get("$state");
         $state.go('messages.inbox');
     });
