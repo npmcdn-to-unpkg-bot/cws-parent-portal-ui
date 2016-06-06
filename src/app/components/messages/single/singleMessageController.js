@@ -18,12 +18,12 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
 
 
     $scope.reply = function(){
-        console.log($scope.replymessage);
         Message.resource.save($scope.replymessage, function(res){
            if(res.success){
                res.message.sender = User.data;
                $scope.conversation.messages.push(res.message);
-               $scope.replymessage = new Message.resource();
+               $(".messages-wrapper").animate({ scrollTop: $(".messages-wrapper").height() }, "slow");
+               $scope.replymessage.content = "";
                console.log(res);
            }
         });

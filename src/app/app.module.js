@@ -15,7 +15,7 @@ app.run(['$rootScope','$state','AuthService','AUTH_EVENTS',function ($rootScope,
                 // User isn’t authenticated
                 event.preventDefault();
                 $state.go('authentication.login', {}, {reload: true});
-                $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+                // $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
             }else if(!next.authenticate && AuthService.isAuthenticated()){
                 event.preventDefault();
                 $state.go('messages.inbox', {}, {reload: true});

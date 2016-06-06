@@ -10,7 +10,7 @@ angular.module('cws').controller('loginController', ['$scope','$state','User', f
         User.login(data.username, data.password).then(function(res) {
             $state.go('messages.inbox', {}, {reload: true});
         }, function(err) {
-            alert("Wrong info");
+            alert("Oops! That email / password combination is not valid.");
         });
     };
 

@@ -4,6 +4,7 @@
 angular.module('cws')
     .factory('User', ['AuthService','$q','$http','API_LINKS','$resource', function(AuthService, $q, $http, API_LINKS, $resource) {
         var user = {};
+        
 
         user.resource = $resource(API_LINKS.baseurl+'users/:id', { id: '@id' }, {
             update: {

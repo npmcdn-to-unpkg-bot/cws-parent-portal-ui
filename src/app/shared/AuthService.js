@@ -29,7 +29,7 @@ angular.module('cws')
             isAuthenticated = false;
             $http.defaults.headers.common['X-Auth-Token'] = undefined;
             window.localStorage.removeItem(LOCAL_TOKEN_KEY);
-            window.localStorage.removeItem(LOCAL_USER_ID);
+            // window.localStorage.removeItem(LOCAL_USER_ID);
         }
 
         var logout = function() {
