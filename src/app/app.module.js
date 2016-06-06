@@ -1,15 +1,15 @@
 var app = angular.module('cws', ['ui.router','ngResource']);
 
-    app.controller('cwsMainCtrl', ['$scope','AUTH_EVENTS','$state', function ($scope,AUTH_EVENTS) {
+    app.controller('cwsMainCtrl', ['$scope','AUTH_EVENTS', function ($scope, AUTH_EVENTS) {
 
         $scope.$on(AUTH_EVENTS.notAuthorized, function(event) {
             alert("You are not allowed to access this resource.");
         });
 
-    }])
+    }]);
 
 
-    .run(function ($rootScope, $state, AuthService) {
+app.run(['$rootScope','$state','AuthService','AUTH_EVENTS',function ($rootScope, $state, AuthService,AUTH_EVENTS) {
         $rootScope.$on('$stateChangeStart', function (event, next) {
             if (next.authenticate && !AuthService.isAuthenticated()){
                 // User isn’t authenticated
@@ -21,4 +21,4 @@ var app = angular.module('cws', ['ui.router','ngResource']);
                 $state.go('messages.inbox', {}, {reload: true});
             }
         });
-    });
+    }]);

@@ -4,9 +4,9 @@
 
 angular.module('cws')
     .constant('API_LINKS', {
-        baseurl: 'http://localhost:3008/api/'
+        // baseurl: 'http://localhost:3008/api/'
         // baseurl: 'http://192.168.99.100:8081/'
-        // baseurl: 'http://ec2-54-193-28-144.us-west-1.compute.amazonaws.com/api/'
+        baseurl: 'https://parentportal.tabordasolutions.net:8443/'
     })
     
     .constant('AUTH_EVENTS', {

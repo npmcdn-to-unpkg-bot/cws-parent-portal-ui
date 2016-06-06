@@ -7,7 +7,7 @@ angular.module('cws').controller('loginController', ['$scope','$state','User', f
 
 
     $scope.login = function(data) {
-        User.login(data.username, data.password).then(function(authenticated) {
+        User.login(data.username, data.password).then(function(res) {
             $state.go('messages.inbox', {}, {reload: true});
         }, function(err) {
             alert("Wrong info");
