@@ -10,16 +10,23 @@ angular.module('cws').controller('newMessageController', ['$scope','User','Conve
     $scope.newConversation = function(){
         console.debug($scope.conversation);
         $(".loading").addClass('active');
-        Conversation.resource.save($scope.conversation, function(data){
-            if(data.success){
-                $scope.conversation = new Conversation.resource();
-                $state.go('messages.inbox', {}, {reload: true});
-                $(".loading").removeClass('active');
+        console.log($scope.conversation.receiver);
+        if($scope.conversation.receiver == undefined){
+            alert("this field it's required");
+            $(".loading").removeClass('active');
+            return false;
+        }else{
+            Conversation.resource.save($scope.conversation, function(data){
+                if(data.success){
+                    $scope.conversation = new Conversation.resource();
+                    $state.go('messages.inbox', {}, {reload: true});
+                    $(".loading").removeClass('active');
 
-            }
+                }
 
-        });
-        // console.debug(conversation);
+            });
+        }
+        console.debug(conversation);
     }
 
 

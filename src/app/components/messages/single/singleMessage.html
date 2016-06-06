@@ -43,9 +43,9 @@
 
     <div class="reply-form">
         <form ng-submit="reply(replymessage)">
-            <textarea class="form-control" id="reply" placeholder="Type to reply" ng-model="replymessage.content"></textarea>
+            <textarea class="form-control" id="reply" placeholder="Type to reply" ng-model="replymessage.content" required></textarea>
             <div class="reply-btns">
-                <a href="javascript:void(0)" class="btn btn-default pull-left"><i class="icon-paperclip"></i> Attach a file</a>
+                <a href="javascript:void(0);" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" title="Popover title" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." class="btn btn-default pull-left"><i class="icon-paperclip"></i> Attach a file</a>
                 <input type="submit" class="btn btn-primary pull-right" value="Reply">
                 <div class="clearfix"></div>
             </div>

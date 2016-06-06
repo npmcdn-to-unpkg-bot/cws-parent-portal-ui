@@ -9,7 +9,7 @@
 <div class="form-group">
     <label class="control-label" for="sentto">Sent to</label>
     <!--<input type="text" class="form-control" id="sentto" placeholder="Select Reciver">-->
-    <select name="sentto" id="sentto" ng-model="conversation.receiver">
+    <select name="sentto" id="sentto" ng-model="conversation.receiver" required>
         <option value="general" selected="selected">General</option>
         <option ng-repeat="worker in user.case_workers" value="{{worker._id}}" >{{worker.name.first_name + " " +worker.name.last_name }}</option>
     </select>
@@ -17,13 +17,13 @@
 
 <div class="form-group">
     <label class="control-label" for="subject">Subject</label>
-    <input type="text" class="form-control" id="subject" placeholder="Enter a subject"  ng-model="conversation.subject">
+    <input type="text" class="form-control" id="subject" placeholder="Enter a subject"  ng-model="conversation.subject" required>
 </div>
 
 
 <div class="form-group">
     <label class="control-label" for="message">Message</label>
-    <textarea class="form-control" id="message" rows="5" placeholder="Type a message"  ng-model="conversation.init_message"></textarea>
+    <textarea class="form-control" id="message" rows="5" placeholder="Type a message"  ng-model="conversation.init_message" required></textarea>
 </div>
 
 

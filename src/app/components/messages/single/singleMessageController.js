@@ -12,7 +12,16 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
         $(".loading").removeClass('active');
 
     });
-    
+
+    function scrollToBottom(){
+        $(".messages-wrapper").animate({ scrollTop: $(".messages-wrapper").height() }, "slow");
+
+    }
+    scrollToBottom();
+
+    $('[data-toggle="popover"]').popover();
+
+
     $scope.replymessage = new Message.resource();
     $scope.replymessage.conversation_id = $stateParams.id;
 
@@ -22,9 +31,8 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
            if(res.success){
                res.message.sender = User.data;
                $scope.conversation.messages.push(res.message);
-               $(".messages-wrapper").animate({ scrollTop: $(".messages-wrapper").height() }, "slow");
+               scrollToBottom();
                $scope.replymessage.content = "";
-               console.log(res);
            }
         });
     }
