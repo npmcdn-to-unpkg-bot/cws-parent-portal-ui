@@ -1,6 +1,9 @@
 angular.module('cws').controller('messagesController', ['$scope','User',function($scope,User){
 
-    $scope.user = User.data;
+    User.data.$promise.then(function(data){
+        $scope.user =  data;
+
+    });
 
     $(".sidebar").click(function(){
         $(".sidebar").removeClass('active');

@@ -13,6 +13,7 @@ angular.module('cws')
             stripTrailingSlashes: false
         });
 
+
         user.login = function(email, pw) {
             return $q(function(resolve, reject) {
                 $http.post(API_LINKS.baseurl + 'session' ,{'email':email, 'password': pw})
@@ -20,7 +21,7 @@ angular.module('cws')
                             if (res.data.success == true){
                                 AuthService.storeUserCredentials(res.data);
                                 resolve('Login success.');
-                                user.data = user.resource.get({ id: res.data.userId });
+                                user.data = user.resource.get({ id: 'me'});
                             }else{
                                 reject('Login Failed.');
                             }
@@ -34,8 +35,7 @@ angular.module('cws')
 
 
         if(AuthService.isAuthenticated()){
-            console.log('user auth data is; ' + AuthService.getUserId());
-            // user.data = user.resource.get({ id: AuthService.getUserId() });
+            user.data = user.resource.get({ id: 'me'});
         }
 
 
