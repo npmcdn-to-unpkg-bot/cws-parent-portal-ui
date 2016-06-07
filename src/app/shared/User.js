@@ -22,8 +22,8 @@ angular.module('cws')
                             if (res.data.success == true){
                                 AuthService.storeUserCredentials(res.data);
                                 resolve('Login success.');
-                                // user.data = user.resource.get({ id: 'me'});
-                                user.data = user.resource.get({ id: res.data.userId});
+                                user.data = user.resource.get({ id: 'me'});
+                                // user.data = user.resource.get({ id: res.data.userId});
                             }else{
                                 reject('Login Failed.');
                             }
@@ -37,8 +37,8 @@ angular.module('cws')
 
 
         if(AuthService.isAuthenticated()){
-            // user.data = user.resource.get({ id: 'me'});
-            user.data = user.resource.get({ id: AuthService.getUserId()});
+            user.data = user.resource.get({ id: 'me'});
+            // user.data = user.resource.get({ id: AuthService.getUserId()});
         }
 
 

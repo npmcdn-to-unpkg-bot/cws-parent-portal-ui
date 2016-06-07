@@ -9,105 +9,113 @@
         <div class="fieldset">
             <h6 class="primary">Parent/Guardian Name</h6>
         </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label" for="fname" >First Name</label>
-                    <input type="text" class="form-control" id="fname" placeholder="Enter your first name" ng-model="user.name.first_name">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label" for="lname">Last Name</label>
-                    <input type="text" class="form-control" id="lname" placeholder="Enter your last name" ng-model="user.name.last_name">
-                </div>
-            </div>
-        </div>
-
-        <div class="fieldset">
-            <h6 class="primary">Physical Address</h6>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label" for="fname">Attention to or In Care of</label>
-                            <input type="text" class="form-control" id="fname" placeholder="Enter name" ng-model="user.address.name">
-                        </div>
+        <form name="form" ng-submit="register(user)" >
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="fname" >First Name <span class="required-elem">*</span></label>
+                        <input type="text" class="form-control" id="fname" placeholder="Enter your first name" ng-model="user.name.first_name" required ng-required="true">
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label" for="fname">Street Address</label>
-                    <input type="text" class="form-control" id="fname" placeholder="Enter street address" ng-model="user.address.street_address">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label" for="fname">Street Address 2</label>
-                    <input type="text" class="form-control" id="fname" placeholder="Enter street address" ng-model="user.address.street_address2">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label" for="fname">State</label>
-                    <input type="text" class="form-control" id="fname" placeholder="Select Sate"  ng-model="user.address.state">
-                </div>
-            </div>
-            <div class="col-md-6">
-               <div class="row">
-                   <div class="col-sm-6">
-                       <div class="form-group">
-                           <label class="control-label" for="fname">City</label>
-                           <input type="text" class="form-control" id="fname" placeholder="Enter city"  ng-model="user.address.city">
-                       </div>
-                   </div>
-                   <div class="col-sm-6">
-                       <div class="form-group">
-                           <label class="control-label" for="fname">Zip Code</label>
-                           <input type="text" class="form-control" id="fname" placeholder="Enter zip code"  ng-model="user.address.zip">
-                       </div>
-                   </div>
-               </div>
-            </div>
-        </div>
-
-        <div class="fieldset">
-            <h6 class="primary">Logging Settigns</h6>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label" for="fname">Email Address</label>
-                            <input type="text" class="form-control" id="fname" placeholder="Enter your email address"  ng-model="user.email">
-                        </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="lname">Last Name <span class="required-elem">*</span></label>
+                        <input type="text" class="form-control" id="lname" placeholder="Enter your last name" ng-model="user.name.last_name" required ng-required="true">
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label" for="lname">Set Password</label>
-                    <input type="text" class="form-control" id="lname" placeholder="Set Password"  ng-model="user.password">
-                </div>
+            <div class="fieldset">
+                <h6 class="primary">Physical Address</h6>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label" for="lname">Confirm Password</label>
-                    <input type="text" class="form-control" id="lname" placeholder="Confirm Password">
-                </div>
-            </div>
-        </div>
 
-        <input type="submit" class="btn btn-primary pull-right shadow" value="Register" ng-click="register()">
-        <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="incare">Attention to or In Care of</label>
+                                <input type="text" class="form-control" id="incare" placeholder="Enter name" ng-model="user.address.name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="staddress">Street Address</label>
+                        <input type="text" class="form-control" id="staddress" placeholder="Enter street address" ng-model="user.address.street_address">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="staddress2">Street Address 2</label>
+                        <input type="text" class="form-control" id="staddress2" placeholder="Enter street address" ng-model="user.address.street_address2">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="state">State</label>
+                        <input type="text" class="form-control" id="state" placeholder="Select Sate"  ng-model="user.address.state">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                   <div class="row">
+                       <div class="col-sm-6">
+                           <div class="form-group">
+                               <label class="control-label" for="city">City</label>
+                               <input type="text" class="form-control" id="city" placeholder="Enter city"  ng-model="user.address.city">
+                           </div>
+                       </div>
+                       <div class="col-sm-6">
+                           <div class="form-group" ng-class="{'has-danger':!form.zip.$valid && formSubmitted}" >
+                               <label class="control-label" for="zip">Zip Code <span class="required-elem">*</span></label>
+                               <input type="number" class="form-control" name="zip" id="zip" placeholder="Enter zip code"  ng-model="user.address.zip" min="10000" ng-minlength="5" ng-required="true" >
+                           </div>
+                       </div>
+                   </div>
+                </div>
+            </div>
+
+            <div class="fieldset">
+                <h6 class="primary">Logging Settigns</h6>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="email">Email Address <span class="required-elem">*</span></label>
+                                <input type="text" class="form-control" id="email" placeholder="Enter your email address"  ng-model="user.email" required ng-required="true">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="password">Set Password <span class="required-elem">*</span></label>
+                        <input type="text" class="form-control" id="password" placeholder="Set Password"  ng-model="user.password" required ng-required="true">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="cpassword">Confirm Password <span class="required-elem">*</span></label>
+                        <input type="text" class="form-control" id="cpassword" placeholder="Confirm Password" required>
+                    </div>
+                </div>
+            </div>
+            <!--!form.$valid  &&-->
+            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="formSubmitted && !formValid">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <p ng-hide="form.zip.$valid && formSubmitted">Please enter valid zip code!</p>
+                <p ng-hide="!passNotMatch && formSubmitted">Password do not match!</p>
+                <p ng-hide="!passWeak && formSubmitted">Password is too weak!</p>
+            </div>
+
+            <input type="submit" class="btn btn-primary pull-right shadow" value="Register" >
+            <div class="clearfix"></div>
+        </form>
 
     </div>
 
