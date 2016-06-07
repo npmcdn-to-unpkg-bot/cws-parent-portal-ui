@@ -6,14 +6,17 @@
         <hr>
     </div>
 
-
     <div class="list-group list-group-custom foster-agencies">
+        <h5 id="no-foster-agencies-message" ng-show="fosterAgencies.length == 0">There were no Foster Agencies found in your zipcode.</h5>
         <a href="javascript:void(0);" class="list-group-item" ng-repeat="fosterAgency in fosterAgencies">
             <div class="number-circle">
                 <p>{{$index+1}}</p>
             </div>
-            <h5 class="primary">California Alliance of Child and Family Services</h5>
-            <p>2201 K St, Sacramento, CA 95816</p>
+            <h5 id="foster-agency-name" class="primary">{{fosterAgency.facility_name}}</h5>
+            <p>
+                <span id="foster-agency-facility-type">{{fosterAgency.facility_type}}</span> | <span id="foster-agency-phone">{{fosterAgency.facility_phone}}</span><br/>
+                <span id="foster-agency-location">{{fosterAgency.location_address}}, {{fosterAgency.location_city}}, {{fosterAgency.location_state}} <span id="foster-agency-zip">{{fosterAgency.location_zip}}</span></span>
+            </p>
         </a>
     </div>
 

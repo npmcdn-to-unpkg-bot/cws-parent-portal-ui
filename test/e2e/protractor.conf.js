@@ -10,8 +10,8 @@ exports.config = {
     onPrepare: function() {
         browser.driver.get('http://localhost:3000/#/login');
 
-        browser.driver.findElement(by.id('email')).sendKeys('husam@gmail.com');
-        browser.driver.findElement(by.id('password')).sendKeys('abc');
+        browser.driver.findElement(by.id('email')).sendKeys('joey.doe@example.com');
+        browser.driver.findElement(by.id('password')).sendKeys('xyz');
         browser.driver.findElement(by.xpath("//input[@value='Log in']")).click();
 
         // Login takes some time, so wait until it's done.
