@@ -47,12 +47,16 @@ gulp.task('asset', function(){
     return gulp.src('src/asset/**')
         .pipe(gulp.dest('dist/asset'));
 });
+gulp.task('env', function(){
+    return gulp.src('src/env.js')
+        .pipe(gulp.dest('dist'));
+});
 gulp.task('ang', function(){
     return gulp.src('src/ang/**')
         .pipe(gulp.dest('dist/ang'));
 });
 
-gulp.task('build', ['style','minify','ang','html','asset']);
+gulp.task('build', ['style','minify','env','ang','html','asset']);
 
 gulp.task('servebuild', function(){
     browserSync({
