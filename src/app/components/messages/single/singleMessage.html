@@ -1,12 +1,12 @@
 <div class="single-message">
     <div class="sec-title">
         <h4 class="pull-left primary">{{conversation.subject}}</h4>
-        <a href="#" class="btn btn-default btn-wide btn-sm pull-right"><i class="icon-print"></i></a>
+        <a href="javascript:void(0);" class="btn btn-default btn-wide btn-sm pull-right" ng-click="print()"><i class="icon-print"></i></a>
         <div class="clearfix"></div>
         <hr>
     </div>
 
-    <div class="messages-wrapper">
+    <div class="messages-wrapper" id="messagesscreen">
         <div class="message-body">
             <div class="message-body-meta">
                 <div class="user-id">

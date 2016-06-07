@@ -1,3 +1,21 @@
+@media print {
+  .single-message, .messages-wrapper{
+    display: block;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible;
+  }
+  .single-message .messages-wrapper{
+    max-height: 100% !important;
+
+  }
+  .sidebar,.reply-form,.navbar,.nav{
+    display: none;
+  }
+
+}
+
+
 .single-message{
   resize: vertical;
   .sec-title{

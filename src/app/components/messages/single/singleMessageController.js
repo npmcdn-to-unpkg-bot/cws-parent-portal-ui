@@ -38,6 +38,11 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
     }
 
 
+    $scope.print = function(){
+        window.print();
+    }
+
+
     
 
 }]);

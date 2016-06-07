@@ -2,4 +2,9 @@ angular.module('cws').controller('fosterAgencyController', ['$scope', 'FosterAge
     User.data.$promise.then(function(data) {
         $scope.fosterAgencies = FosterAgency.query({zipcode: data.address.zip});
     });
+
+    $scope.print = function(){
+        window.print();
+    }
+    
 }]);
