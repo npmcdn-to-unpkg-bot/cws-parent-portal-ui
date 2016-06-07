@@ -6,7 +6,7 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
     $(".loading").addClass('active');
 
     $scope.conversation = Conversation.resource.get({id: $stateParams.id}, function(){
-        if(User.data._id != $scope.conversation.sender._id){
+        if(User.data.id != $scope.conversation.sender._id){
             $scope.replymessage.receiver = $scope.conversation.sender._id;
         }
         $(".loading").removeClass('active');

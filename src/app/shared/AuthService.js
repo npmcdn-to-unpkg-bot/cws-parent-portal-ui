@@ -50,21 +50,6 @@ angular.module('cws')
             isAuthenticated: function() {return isAuthenticated;},
             getUserId: function() {return userId;}
         };
-    }])
-
-    // will logout the user whenever we got 401 or 403 http responsive code from the server
-    .factory('AuthInterceptor', ['$rootScope','$q','AUTH_EVENTS',function ($rootScope, $q, AUTH_EVENTS) {
-        return {
-            responseError: function (response) {
-                $rootScope.$broadcast({
-                    401: AUTH_EVENTS.notAuthenticated,
-                    403: AUTH_EVENTS.notAuthorized
-                }[response.status], response);
-                return $q.reject(response);
-            }
-        };
-    }])
-
-    .config(['$httpProvider',function ($httpProvider) {
-        $httpProvider.interceptors.push('AuthInterceptor');
     }]);
+
+    

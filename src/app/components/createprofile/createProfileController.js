@@ -1,4 +1,8 @@
-angular.module('cws').controller('createProfileController', ['$scope','User','AuthService','$state',function($scope, User,AuthService,$state){
+angular.module('cws').controller('createProfileController', ['$scope','User','AuthService',function($scope, User,AuthService){
+
+    $('.selectpicker').selectpicker();
+
+    $("[data-size='block']").parent('')
 
     $scope.user = new User.resource();
     $scope.formSubmitted = false;
@@ -17,6 +21,7 @@ angular.module('cws').controller('createProfileController', ['$scope','User','Au
     }
 
     $scope.register = function(){
+        console.debug($scope.user);
         $scope.formSubmitted = true;
         if(!strength($scope.user.password)){
             $scope.passWeak = true;
@@ -34,13 +39,14 @@ angular.module('cws').controller('createProfileController', ['$scope','User','Au
             $scope.formValid = true;
             $(".loading").addClass('active');
             User.resource.save($scope.user, function(data){
-                console.log("user returned data is:",data);
+                console.log("data is ", data);
                 $(".loading").removeClass('active');
                 if(data.success){
                     AuthService.storeUserCredentials(data);
                     window.location = '/';
                 }
-                console.log(data.success);
+            },function (err) {
+                console.log(err);
             });
 
         }

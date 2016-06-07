@@ -5,7 +5,9 @@
 angular.module('cws')
     .constant('API_LINKS',window.__env)
 
-    .constant('AUTH_EVENTS', {
+    .constant('ERRORS', {
         notAuthenticated: 'auth-not-authenticated',
-        notAuthorized: 'auth-not-authorized'
+        notFound: 'resource-not-found',
+        badRequest: 'bad-request',
+        server: 'server-internal-error'
     });

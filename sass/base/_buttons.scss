@@ -28,6 +28,14 @@
       background: darken($Primary, 5);
     }
   }
+  &.btn-form-control{
+    background: $BrightGray;
+    border-bottom:1px solid $Primary;
+    &:hover{
+      color: $Gray;
+      background: darken($BrightGray, 5);
+    }
+  }
   &.btn-default{
     background: $Gray;
     color: $Default;

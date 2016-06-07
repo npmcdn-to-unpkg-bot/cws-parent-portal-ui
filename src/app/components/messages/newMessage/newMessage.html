@@ -9,8 +9,13 @@
 <div class="form-group">
     <label class="control-label" for="sentto">Sent to</label>
     <!--<input type="text" class="form-control" id="sentto" placeholder="Select Reciver">-->
-    <select name="sentto" id="sentto" ng-model="conversation.receiver" required>
-        <option value="general" selected="selected">General</option>
+    <!--<select name="sentto" id="sentto" ng-model="conversation.receiver" required>-->
+        <!--<option value="general" selected="selected">General</option>-->
+        <!--<option ng-repeat="worker in user.case_workers" value="{{worker._id}}" >{{worker.name.first_name + " " +worker.name.last_name }}</option>-->
+    <!--</select>-->
+
+
+    <select name="state" id="sentto" class="selectpicker" data-style="btn btn-form-control" data-size="block" ng-model="user.address.state">
         <option ng-repeat="worker in user.case_workers" value="{{worker._id}}" >{{worker.name.first_name + " " +worker.name.last_name }}</option>
     </select>
 </div>
