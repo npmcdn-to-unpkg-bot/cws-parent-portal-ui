@@ -77,11 +77,11 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             controller:'singleMessageController',
             authenticate: true
         })
-        .state('fosterAgency',{
+        .state('fosterAgencies',{
             parent:'main',
             url:'/foster-agency',
-            templateUrl:'app/components/fosterAgency/fosterAgency.html',
-            controller: 'fosterAgencyController',
+            templateUrl:'app/components/fosterAgencies/fosterAgencies.html',
+            controller: 'fosterAgenciesController',
             authenticate: true
         })
         .state('fosterAgency.single',{

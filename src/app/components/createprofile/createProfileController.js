@@ -1,4 +1,4 @@
-angular.module('cws').controller('createProfileController', ['$scope','User','AuthService',function($scope, User,AuthService){
+angular.module('cws').controller('createProfileController', ['$scope','User','AuthService','toastr',function($scope, User,AuthService,toastr){
 
     $('.selectpicker').selectpicker();
 
@@ -44,6 +44,8 @@ angular.module('cws').controller('createProfileController', ['$scope','User','Au
                 if(data.success){
                     AuthService.storeUserCredentials(data);
                     window.location = '/';
+                }else{
+                    toastr.error(data.message, 'Error');
                 }
             },function (err) {
                 console.log(err);
