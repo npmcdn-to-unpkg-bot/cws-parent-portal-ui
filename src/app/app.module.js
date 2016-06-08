@@ -1,21 +1,23 @@
 var app = angular.module('cws', ['ui.router','ngResource','toastr']);
 
-    app.controller('cwsMainCtrl', ['$scope','ERRORS','toastr', function ($scope, ERRORS, toastr) {
+    app.controller('cwsMainCtrl', ['$scope','ERRORS','toastr','AuthService', function ($scope, ERRORS, toastr,AuthService) {
 
         $scope.$on(ERRORS.badRequest, function() {
-            toastr.error('Bad request please check your input!', 'Error');
+            toastr.error('Invalid request', 'Error');
         });
 
         $scope.$on(ERRORS.notFound, function() {
-            toastr.error('Resource not found!', 'Error');
+            toastr.error('Resource not found', 'Error');
         });
 
         $scope.$on(ERRORS.notAuthenticated, function() {
-            toastr.error('You are not allowed to access this resource!', 'Error');
+            toastr.error('Unauthorized request', 'Error');
+            AuthService.logout();
+
         });
 
         $scope.$on(ERRORS.server, function() {
-            toastr.error('We got internal error on the server!', 'Error');
+            toastr.error('Unexpected error', 'Error');
         });
 
     }])

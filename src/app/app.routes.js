@@ -79,7 +79,7 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         })
         .state('fosterAgencies',{
             parent:'main',
-            url:'/foster-agency',
+            url:'/foster-agencies',
             templateUrl:'app/components/fosterAgencies/fosterAgencies.html',
             controller: 'fosterAgenciesController',
             authenticate: true

@@ -2,7 +2,6 @@ angular.module('cws').controller('createProfileController', ['$scope','User','Au
 
     $('.selectpicker').selectpicker();
 
-    $("[data-size='block']").parent('')
 
     $scope.user = new User.resource();
     $scope.formSubmitted = false;
@@ -39,7 +38,6 @@ angular.module('cws').controller('createProfileController', ['$scope','User','Au
             $scope.formValid = true;
             $(".loading").addClass('active');
             User.resource.save($scope.user, function(data){
-                console.log("data is ", data);
                 $(".loading").removeClass('active');
                 if(data.success){
                     AuthService.storeUserCredentials(data);
@@ -48,6 +46,7 @@ angular.module('cws').controller('createProfileController', ['$scope','User','Au
                     toastr.error(data.message, 'Error');
                 }
             },function (err) {
+                toastr.error(err, 'Error');
                 console.log(err);
             });
 

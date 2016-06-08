@@ -1,6 +1,13 @@
-<div class="sec-title">
+<div class="sec-title messages-header">
     <h4 class="pull-left">Sent</h4>
-    <a href="javascript:void(0);" class="btn btn-default btn-wide btn-sm pull-right"><i class="icon-search"></i></a>
+    <div class="col-sm-6 pull-right">
+        <div class="form-group">
+            <div class="input-group pull-right">
+                <input type="text" class="form-control sm" placeholder="Search Sent Messages" ng-show="showSentSearch" ng-model="SentSearchBox">
+                <a href="javascript:void(0)" ng-click="showSentSearch = !showSentSearch" class="btn btn-default input-group-addon btn-wide btn-sm"><i class="icon-search"></i></a>
+            </div>
+        </div>
+    </div>
     <div class="clearfix"></div>
     <hr>
 </div>
