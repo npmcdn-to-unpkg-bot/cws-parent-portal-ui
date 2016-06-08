@@ -8,7 +8,8 @@
         <div class="fieldset">
             <h6 class="primary">Parent/Guardian Name</h6>
         </div>
-        <form name="form" ng-submit="update(user)" >
+        <!---->
+        <form name="form" ng-submit="form.$valid">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -53,8 +54,15 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
+
                         <label class="control-label" for="state">State</label>
-                        <input type="text" class="form-control" id="state" placeholder="Select Sate"  ng-model="user.address.state">
+
+
+                        <select name="state" id="state" value="CA" class="selectpicker" data-style="btn btn-form-control" data-size="block" ng-model="user.address.state">
+                            <option ng-repeat="state in USStates" value="state.abbreviation">state.name</option>
+                        </select>
+
+
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -98,24 +106,24 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="password">New Password</label>
-                        <input type="text" class="form-control" id="npassword" placeholder="New Password"  ng-model="user.npass">
+                        <input type="text" class="form-control" name="npassword" id="npassword" ng-pattern="strongRegex" placeholder="New Password"  ng-model="user.npass">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="cnpassword">Confirm New Password</label>
-                        <input type="text" class="form-control" id="cnpassword" placeholder="Confirm New Password">
+                        <input type="text" class="form-control" id="cnpassword" ng-pattern="strongRegex" placeholder="Confirm New Password" ng-model="user.cpassword">
                     </div>
                 </div>
             </div>
             <!--!form.$valid  &&-->
-            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="formSubmitted && !formValid">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <p ng-hide="form.zip.$valid && formSubmitted">Please enter valid zip code!</p>
-                <p ng-hide="!passNotMatch && formSubmitted">Password do not match!</p>
-                <p ng-hide="!passWeak && formSubmitted">Password is too weak!</p>
-            </div>
-
+            <!--<div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.$valid && form.$submitted || user.npass != user.cpassword && form.$submitted || !form.password.$dirty && form.npassword.$dirty && user.npass != user.cpassword">-->
+                <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>-->
+                <!--<p ng-show="!form.password.$dirty && form.npass.$dirty && user.npass != user.cpassword">Current password is required in able to update the password</p>-->
+                <!--<p ng-show="!form.zip.$valid">Please enter valid zip code!</p>-->
+                <!--<p ng-show="user.cpassword != user.npass">New password do not match!</p>-->
+                <!--<p ng-show="!form.npassword.$valid">New password is too weak!</p>-->
+            <!--</div>-->
             <input type="submit" class="btn btn-primary pull-right shadow" value="Update">
             <div class="clearfix"></div>
         </form>

@@ -6,6 +6,6 @@ npm-debug.log
 .idea/
 .idea
 dist
-ang/app.js
+app.js
 report.xml
 log/

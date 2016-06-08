@@ -9,7 +9,7 @@
         <div class="fieldset">
             <h6 class="primary">Parent/Guardian Name</h6>
         </div>
-        <form name="form" ng-submit="register(user)" >
+        <form name="form" ng-submit="form.$valid && user.cpassword == user.password && register(user)">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -161,25 +161,31 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="password">Set Password <span class="required-elem">*</span></label>
-                        <input type="text" class="form-control" id="password" placeholder="Set Password"  ng-model="user.password" required ng-required="true">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Set Password" ng-pattern="strongRegex" ng-model="user.password" required ng-required="true">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="cpassword">Confirm Password <span class="required-elem">*</span></label>
-                        <input type="text" class="form-control" id="cpassword" placeholder="Confirm Password" required>
+                        <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm Password" ng-pattern="strongRegex" ng-model="user.cpassword" required>
                     </div>
                 </div>
             </div>
-            <!--!form.$valid  &&-->
-            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="formSubmitted && !formValid">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <p ng-hide="form.zip.$valid && formSubmitted">Please enter valid zip code!</p>
-                <p ng-hide="!passNotMatch && formSubmitted">Password do not match!</p>
-                <p ng-hide="!passWeak && formSubmitted">Password is too weak!</p>
+            <div ng-if="form.password.$dirty">
+                <p>Password must be 8 or more characters, and contain
+                <p class="sm">1 lowercase letter</p>
+                <p class="sm">1 uppercase letter</p>
+                <p class="sm">1 numbner</p></p>
+                <p class="sm">1 special character</p></p>
             </div>
-
-            <input type="submit" class="btn btn-primary pull-right shadow" value="Register" >
+            <!--!form.$valid  &&-->
+            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.$valid && form.$submitted || user.cpassword != user.password && form.$submitted">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <p ng-show="!form.zip.$valid">Please enter valid zip code!</p>
+                <p ng-show="user.cpassword != user.password">Password do not match!</p>
+                <p ng-show="!form.password.$valid">Password is too weak!</p>
+            </div>
+            <input type="submit" name="submit" class="btn btn-primary pull-right shadow" value="Register">
             <div class="clearfix"></div>
         </form>
 

@@ -3,8 +3,12 @@
  */
 (function() {
     'use strict';
-angular.module('cws').controller('editProfileController', ['$scope','$http','User',function($scope, $http, User){
-    // $scope.user = {};
+angular.module('cws').controller('editProfileController', ['$scope','$http','User','USStates','toastr',function($scope, $http, User,USStates,toastr){
+
+    $scope.USStates = USStates;
+
+    // console.log(USStates[0]);
+
     User.data.$promise.then(function(data){
         if(data.success){
             $scope.user = data.user;
@@ -16,8 +20,14 @@ angular.module('cws').controller('editProfileController', ['$scope','$http','Use
 
 
     $scope.update = function () {
-        User.resource.update({ id:'me' }, $scope.user).then(function(data){
-            console.log(data);
+        var update = User.resource.update({ id:'me' }, $scope.user, function(){
+            if(update.success){
+                toastr.success('Your profile updated!', 'Success');
+                $scope.user = update.user;
+                $("#cnpassword").val("");
+            }else{
+                toastr.error(update.message, 'Error');
+            }
         });
     };
 
