@@ -4,7 +4,13 @@ The CWS Parent Portal User Interface provides web-based user interface for the C
 
 ## Configuration
 
-The CWS Parent Portal User Interface does not require any configuration.
+The CWS Parent Portal UI requires the following environment variables:
+
+- baseurl -- the location where the UI code, running in a browser, can contact the CWS Parent Portal API
+
+Environment variables must be specified in the env.js file. During development, this file is located the the src
+directory. At runtime, this file is located at /usr/local/share/cws-parent-portal-ui/env.js. The env.js file is
+designed to be mapped as a volume during Docker deployment.
 
 ## Installation
 
@@ -20,7 +26,7 @@ The CWS Parent Portal UI is available as a Docker container from the following r
 
 Run the application with Docker using a command like this:
 
-    % docker run -p 8080:8080 -v log:/var/log/cws-parent-portal-ui parent_portal_ui_image
+    % docker run -p 8080:8080 -v ./log:/var/log/cws-parent-portal-ui -v ./ui/env.js:/usr/local/share/cws-parent-portal-ui/env.js parent_portal_ui_image
 
 Containers are tagged with the short Git commit hash from the GitHub repository.
 
