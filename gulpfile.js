@@ -18,7 +18,7 @@ gulp.task('default', ['serve']);
 gulp.task('minify', function() {
     return gulp.src('./src/app/**/*.js')
         .pipe(ngAnnotate())
-        .pipe(concat('all.js'))
+        .pipe(concat('app.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./src/ang'));
 });

@@ -16,7 +16,9 @@ angular.module('cws').controller('editProfileController', ['$scope','$http','Use
 
 
     $scope.update = function () {
-        User.resource.update({ id:'me' }, $scope.user);
+        User.resource.update({ id:'me' }, $scope.user).then(function(data){
+            console.log(data);
+        });
     };
 
     
