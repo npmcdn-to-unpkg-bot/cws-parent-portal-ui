@@ -1,3 +1,5 @@
+(function() {
+    'use strict';
 angular.module('cws').controller('loginController', ['$scope','$state','User', function($scope,$state, User){
     
 
@@ -19,3 +21,4 @@ angular.module('cws').controller('loginController', ['$scope','$state','User', f
 
 
 }]);
+}());

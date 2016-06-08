@@ -1,6 +1,8 @@
 /**
  * Created by Husamui on 6/1/16.
  */
+(function() {
+    'use strict';
 angular.module('cws').controller('newMessageController', ['$scope','User','Conversation','$state','toastr',function($scope,User,Conversation,$state,toastr){
     $scope.conversation = new Conversation.resource();
 
@@ -35,3 +37,4 @@ angular.module('cws').controller('newMessageController', ['$scope','User','Conve
 
 
 }]);
+}());

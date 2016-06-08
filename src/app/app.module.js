@@ -1,3 +1,5 @@
+(function() {
+    'use strict';
 var app = angular.module('cws', ['ui.router','ngResource','toastr']);
 
     app.controller('cwsMainCtrl', ['$scope','ERRORS','toastr','AuthService', function ($scope, ERRORS, toastr,AuthService) {
@@ -70,6 +72,7 @@ var app = angular.module('cws', ['ui.router','ngResource','toastr']);
             }
         };
     }])
-    .config(function($httpProvider) {
+    .config(['$httpProvider',function($httpProvider) {
         $httpProvider.interceptors.push('AuthInterceptor');
-    });
+    }]);
+}());

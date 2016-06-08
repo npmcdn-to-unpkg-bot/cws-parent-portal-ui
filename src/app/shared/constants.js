@@ -1,7 +1,8 @@
 /**
  * Created by Husamui on 5/29/16.
  */
-
+(function() {
+    'use strict';
 angular.module('cws')
     .constant('API_LINKS',window.__env)
 
@@ -11,3 +12,4 @@ angular.module('cws')
         badRequest: 'bad-request',
         server: 'server-internal-error'
     });
+}());

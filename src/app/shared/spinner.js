@@ -1,4 +1,7 @@
-function spinner() {
+(function() {
+    'use strict';
+
+    function spinner() {
     return {
         request: function(config) {
             $(".loading").addClass('active');
@@ -24,8 +27,8 @@ function spinner() {
 
 angular.module('cws')
     .factory('spinner', spinner)
-    .config(function($httpProvider) {
+    .config(['$httpProvider',function($httpProvider) {
         $httpProvider.interceptors.push('spinner');
-    });
-
+    }]);
+}());
 

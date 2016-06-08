@@ -1,3 +1,5 @@
+(function() {
+    'use strict';
 angular.module('cws')
 
     .service('AuthService', ['$rootScope','$q','$http', function($rootScope, $q, $http) {
@@ -51,5 +53,5 @@ angular.module('cws')
             getUserId: function() {return userId;}
         };
     }]);
-
+}());
     

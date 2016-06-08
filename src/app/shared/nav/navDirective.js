@@ -1,4 +1,6 @@
-angular.module('cws').directive('cwsNav', ['AuthService','$state',function(AuthService,$state){
+(function() {
+    'use strict';
+angular.module('cws').directive('cwsNav', ['AuthService',function(AuthService){
     return{
         restrict: 'AE',
         scope:{
@@ -20,3 +22,4 @@ angular.module('cws').directive('cwsNav', ['AuthService','$state',function(AuthS
         }
     }
 }]);
+}());

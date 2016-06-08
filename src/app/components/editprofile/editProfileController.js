@@ -1,14 +1,19 @@
 /**
  * Created by Husamui on 5/31/16.
  */
-
+(function() {
+    'use strict';
 angular.module('cws').controller('editProfileController', ['$scope','$http','User',function($scope, $http, User){
-    $scope.user = {};
+    // $scope.user = {};
     User.data.$promise.then(function(data){
-        $scope.user = data;
-        $scope.user.address.zip = Number(data.address.zip);
-
+        if(data.success){
+            $scope.user = data.user;
+            $scope.user.address.zip = Number(data.user.address.zip);
+        }else{
+            console.log("Failed to load the user resources");
+        }
     });
+
 
     $scope.update = function () {
         User.resource.update({ id:'me' }, $scope.user);
@@ -17,3 +22,4 @@ angular.module('cws').controller('editProfileController', ['$scope','$http','Use
     
 
 }]);
+}());

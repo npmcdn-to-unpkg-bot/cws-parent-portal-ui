@@ -1,3 +1,5 @@
+(function() {
+    'use strict';
 angular.module('cws').controller('messagesController', ['$scope','User',function($scope,User){
 
     User.data.$promise.then(function(data){
@@ -9,3 +11,4 @@ angular.module('cws').controller('messagesController', ['$scope','User',function
         $(".sidebar").removeClass('active');
     })
 }]);
+}());

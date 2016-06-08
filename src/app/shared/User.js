@@ -1,6 +1,9 @@
 /**
  * Created by Husamui on 5/31/16.
  */
+(function() {
+    'use strict';
+
 angular.module('cws')
     .factory('User', ['AuthService','$q','$http','API_LINKS','$resource', function(AuthService, $q, $http, API_LINKS, $resource) {
         var user = {};
@@ -46,3 +49,4 @@ angular.module('cws')
 
 
         }]);
+}());

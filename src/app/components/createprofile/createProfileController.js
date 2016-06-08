@@ -1,3 +1,5 @@
+(function() {
+    'use strict';
 angular.module('cws').controller('createProfileController', ['$scope','User','AuthService','toastr',function($scope, User,AuthService,toastr){
 
     $('.selectpicker').selectpicker();
@@ -55,3 +57,4 @@ angular.module('cws').controller('createProfileController', ['$scope','User','Au
     }
 
 }]);
+}());

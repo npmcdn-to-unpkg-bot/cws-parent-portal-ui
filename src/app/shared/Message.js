@@ -1,6 +1,8 @@
 /**
  * Created by Husamui on 5/31/16.
  */
+(function() {
+    'use strict';
 angular.module('cws')
     .factory('Message', ['API_LINKS','$resource', function(API_LINKS,$resource) {
 
@@ -21,3 +23,4 @@ angular.module('cws')
 
 
         }]);
+}());

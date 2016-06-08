@@ -1,3 +1,6 @@
+(function() {
+    'use strict';
+
 var app = angular.module('cws');
 app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.when('/messages', '/messages/inbox');
@@ -97,3 +100,4 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         $state.go('messages.inbox');
     });
 }]);
+}());

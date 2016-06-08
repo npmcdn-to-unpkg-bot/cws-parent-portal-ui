@@ -1,20 +1,21 @@
 /**
  * Created by Husamui on 6/1/16.
  */
+(function() {
+    'use strict';
 angular.module('cws').controller('singleMessageController', ['$scope','$stateParams','Conversation','Message','User',function($scope, $stateParams,Conversation,Message,User){
 
-    $(".loading").addClass('active');
+    var messagesWrapper = $(".messages-wrapper");
 
     $scope.conversation = Conversation.resource.get({id: $stateParams.id}, function(){
-        if(User.data.id != $scope.conversation.sender._id){
-            $scope.replymessage.receiver = $scope.conversation.sender._id;
+        if(User.data.id != $scope.conversation.sender.id){
+            $scope.replymessage.receiver = $scope.conversation.sender.id;
         }
-        $(".loading").removeClass('active');
 
     });
 
     function scrollToBottom(){
-        $(".messages-wrapper").animate({ scrollTop: $(".messages-wrapper").height() }, "slow");
+        messagesWrapper.animate({ scrollTop: messagesWrapper.height() }, "slow");
 
     }
     scrollToBottom();
@@ -35,7 +36,7 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
                $scope.replymessage.content = "";
            }
         });
-    }
+    };
 
 
     $scope.print = function(){
@@ -46,3 +47,4 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
     
 
 }]);
+}());
