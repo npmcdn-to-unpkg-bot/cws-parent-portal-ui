@@ -10,5 +10,6 @@ VOLUME /var/log/cws-parent-portal-ui
 
 EXPOSE 8080
 
-ENTRYPOINT [ "nginx", "-c", "/usr/local/etc/cws-parent-portal-ui/nginx.conf" ]
+ENTRYPOINT [ "nginx" ]
+CMD [ "-c", "/usr/local/etc/cws-parent-portal-ui/nginx.conf" ]
 
