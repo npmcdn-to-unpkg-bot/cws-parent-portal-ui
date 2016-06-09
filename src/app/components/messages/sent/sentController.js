@@ -3,7 +3,17 @@
  */
 (function() {
     'use strict';
-angular.module('cws').controller('sentController', ['$scope','Conversation',function($scope,Conversation){
-    $scope.conversations = Conversation.resource.query({select:'sender'});
-}]);
+
+
+    angular.module('cws').controller('sentController', ['$scope','Conversation',function($scope,Conversation){
+        // $scope.conversations = Conversation.resource.query({select:'sender'});
+
+        Conversation.resource.get({select:'sender'},function(data){
+            $scope.conversations = data.conversations;
+        });
+
+    }]);
+
+
+
 }());

@@ -3,7 +3,7 @@
 angular.module('cws').controller('messagesController', ['$scope','User',function($scope,User){
 
     User.data.$promise.then(function(data){
-        $scope.user =  data;
+        $scope.user =  data.user;
 
     });
 

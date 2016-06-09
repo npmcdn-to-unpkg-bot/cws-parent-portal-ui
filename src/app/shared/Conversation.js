@@ -8,8 +8,7 @@ angular.module('cws')
 
         var conversation = {};
         conversation.resource = $resource(API_LINKS.baseurl+'conversation/:id', {
-            id: '@id',
-            box: '@box'
+            id: '@id'
         }, {
             update: {
                 method: 'PUT' // this method issues a PUT request

@@ -1,18 +1,27 @@
 (function() {
     'use strict';
-angular.module('cws').controller('mainController', ['$scope','AuthService','User',function($scope,AuthService,User){
+angular.module('cws').controller('mainController', ['$scope','$rootScope','AuthService','User','ERRORS',function($scope,$rootScope,AuthService,User,ERRORS){
 
 
     User.data.$promise.then(function(data){
         if(data.success){
             $scope.user = data.user;
         }else{
-            console.log("Failed to load the user resources");
+            $rootScope.$broadcast(ERRORS.server);
         }
-        $(".loading").removeClass('active');
     });
 
 
 }]);
 
 }());
+
+
+
+
+
+
+
+
+
+

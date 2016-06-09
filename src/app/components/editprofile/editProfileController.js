@@ -3,7 +3,7 @@
  */
 (function() {
     'use strict';
-angular.module('cws').controller('editProfileController', ['$scope','$http','User','USStates','toastr',function($scope, $http, User,USStates,toastr){
+angular.module('cws').controller('editProfileController', ['$scope','$rootScope','$http','User','USStates','toastr','ERRORS',function($scope,$rootScope, $http, User,USStates,toastr,ERRORS){
 
     $scope.USStates = USStates;
 
@@ -14,7 +14,7 @@ angular.module('cws').controller('editProfileController', ['$scope','$http','Use
             $scope.user = data.user;
             $scope.user.address.zip = Number(data.user.address.zip);
         }else{
-            console.log("Failed to load the user resources");
+            $rootScope.$broadcast(ERRORS.server);
         }
     });
 

@@ -39,9 +39,12 @@
     @include screen('tablet') {
       display: block;
     }
-    img{
-      width:auto;
-      height:600px;
+    li{
+      height:620px;
+      img{
+        width:auto;
+        height:100%;
+      }
     }
     .flex-control-nav,.flex-direction-nav{
       display: none;

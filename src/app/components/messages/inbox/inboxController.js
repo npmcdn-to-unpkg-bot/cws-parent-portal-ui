@@ -7,7 +7,10 @@ angular.module('cws').controller('inboxController', ['$scope','Conversation',fun
 
 
 
-    $scope.conversations = Conversation.resource.query({select:'receiver'});
+    Conversation.resource.get({select:'receiver'},function(data){
+        $scope.conversations = data.conversations;
+    });
+
 
 
     $scope.getSender = function(conversion){

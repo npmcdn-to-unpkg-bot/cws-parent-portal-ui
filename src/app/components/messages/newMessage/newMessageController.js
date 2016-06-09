@@ -30,7 +30,6 @@ angular.module('cws').controller('newMessageController', ['$scope','User','Conve
 
             });
         }
-        console.debug(conversation);
     }
 
 
