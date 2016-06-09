@@ -28,7 +28,8 @@ Run the application with Docker using a command like this:
 
     % docker run -p 8080:8080 -v ./log:/var/log/cws-parent-portal-ui -v ./ui/env.js:/usr/local/share/cws-parent-portal-ui/env.js parent_portal_ui_image
 
-Containers are tagged with the short Git commit hash from the GitHub repository.
+Containers are tagged with the short Git commit hash from the GitHub repository. Containers are additionally tagged
+with the tag 'latest' to indicate the most recent version.
 
 ## Development Environment
 

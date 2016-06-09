@@ -1,12 +1,13 @@
 describe('listing foster agencies', function() {
+
     it('should load the correct page title', function(){
-        browser.get('/#/foster-agency');
+        browser.get('/#/foster-agencies');
         expect(element(by.id('foster-agency-title')).getText()).toBe('Foster agencies in your zip code');
     });
 
     it('should display a message if no foster agencies found for zip', function (){
 
-        browser.get('/#/foster-agency');
+        browser.get('/#/foster-agencies');
 
         agencyList = element.all(by.repeater('fosterAgency in fosterAgencies'));
 
@@ -22,7 +23,7 @@ describe('listing foster agencies', function() {
 
     describe('foster agencies are displayed on screen', function(){
         beforeEach(function () {
-            browser.get('/#/foster-agency');
+            browser.get('/#/foster-agencies');
 
             agencyList = element.all(by.repeater('fosterAgency in fosterAgencies'));
         })
