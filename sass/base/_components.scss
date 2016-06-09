@@ -72,8 +72,16 @@
       border-bottom:1px solid $Warning;
     }
   }
+  select{
+    &.form-control{
+      border-radius: 0;
+      border: 1px solid $BorderGray;
+      position: relative;
+    }
+  }
 
 }
+
 .well{
   background: $Default;
   border: none;

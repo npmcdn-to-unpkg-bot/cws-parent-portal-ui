@@ -3,11 +3,9 @@
  */
 (function() {
     'use strict';
-angular.module('cws').controller('editProfileController', ['$scope','$rootScope','$http','User','USStates','USStateLookups','toastr','ERRORS',function($scope,$rootScope, $http, User,USStates,USStateLookups,toastr,ERRORS){
-
+angular.module('cws').controller('editProfileController', ['$scope','$rootScope','$http','User','USStates','toastr','ERRORS',function($scope,$rootScope, $http, User,USStates,toastr,ERRORS){
 
     $scope.USStates = USStates;
-    $scope.USStateLookups = USStateLookups;
 
     // console.log(USStates[0]);
 

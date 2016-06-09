@@ -14,7 +14,7 @@
         <!--<option ng-repeat="worker in user.case_workers" value="{{worker._id}}" >{{worker.name.first_name + " " +worker.name.last_name }}</option>-->
     <!--</select>-->
 
-    <select name="state" id="sentto"  data-style="btn btn-form-control" data-size="block" ng-model="conversation.receiver">
+    <select name="state" id="sentto" class="form-control" ng-model="conversation.receiver">
         <option ng-repeat="worker in user.case_workers" value="{{worker.id}}" >{{worker.name.first_name + " " +worker.name.last_name }}</option>
     </select>
 

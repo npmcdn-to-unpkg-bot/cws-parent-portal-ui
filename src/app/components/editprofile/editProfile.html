@@ -57,8 +57,12 @@
 
                         <label class="control-label" for="state">State</label>
 
-                        <select name="state" id="state" class="selectpicker" data-style="btn btn-form-control" data-size="block" ng-model="user.address.state"
-                            ng-options="state as USStateLookups[state] for state in USStates"></select>
+
+                        <select name="state" id="state" class="form-control" ng-model="user.address.state">
+                            <option ng-repeat="state in USStates" value="{{state.abbreviation}}">{{state.name}}</option>
+                        </select>
+
+
 
                     </div>
                 </div>
