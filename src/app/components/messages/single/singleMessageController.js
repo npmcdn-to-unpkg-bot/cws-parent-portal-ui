@@ -7,19 +7,25 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
 
     var messagesWrapper = $(".messages-wrapper");
 
-    Conversation.resource.get({id: $stateParams.id}, function(data){
-        $scope.conversation = data.conversation;
-        console.log(data);
-        if(User.data.id != $scope.conversation.sender.id){
+    function disableReplyingFomr(){
+        // So the user can't reply on their messages.
+        var textarea = $("#replyMsgInput");
+        textarea.attr('disabled','disabled');
+        textarea.attr('placeholder','waiting for response');
+        $(".reply-btns input").attr('disabled','disabled');
+    }
 
-            // So the user can't reply on their messages.
-            var textarea = $("#replyMsgInput");
-            textarea.attr('disabled','disabled');
-            textarea.attr('placeholder','waiting for response');
-            $(".reply-btns input").attr('disabled','disabled');
-        }
+        Conversation.resource.get({id: $stateParams.id}, function(data){
+            $scope.conversation = data.conversation;
+            // console.log($scope.conversation.receiver.id);
+            $scope.replymessage.receiver = $scope.conversation.receiver.id;
 
-    });
+            if(User.data.user.id == $scope.conversation.sender.id){
+                disableReplyingFomr();
+            }
+
+        });
+
 
     function scrollToBottom(){
         messagesWrapper.animate({ scrollTop: messagesWrapper.height() }, "slow");
@@ -34,11 +40,13 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
     $scope.replymessage.conversation_id = $stateParams.id;
 
 
+
     $scope.reply = function(){
         Message.resource.save($scope.replymessage, function(res){
            if(res.success){
                res.message.sender = User.data.user;
                $scope.conversation.messages.push(res.message);
+               disableReplyingFomr();
                scrollToBottom();
                $scope.replymessage.content = "";
            }

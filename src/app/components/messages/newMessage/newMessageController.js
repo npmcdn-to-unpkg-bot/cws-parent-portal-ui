@@ -7,11 +7,11 @@ angular.module('cws').controller('newMessageController', ['$scope','User','Conve
     $scope.conversation = new Conversation.resource();
 
 
-    $('.selectpicker').selectpicker();
+
+
 
     $scope.newConversation = function(){
         console.debug($scope.conversation);
-        $(".loading").addClass('active');
         console.log($scope.conversation.receiver);
         if($scope.conversation.receiver == undefined){
             // alert("this field it's required");
@@ -24,8 +24,6 @@ angular.module('cws').controller('newMessageController', ['$scope','User','Conve
                 if(data.success){
                     $scope.conversation = new Conversation.resource();
                     $state.go('messages.inbox', {}, {reload: true});
-                    $(".loading").removeClass('active');
-
                 }
 
             });

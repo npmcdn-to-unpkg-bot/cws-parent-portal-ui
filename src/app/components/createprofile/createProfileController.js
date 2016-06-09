@@ -17,14 +17,12 @@ angular.module('cws').controller('createProfileController', ['$scope','User','Au
 
 
     $scope.register = function(){
-        console.log("submited");
-        $(".loading").addClass('active');
         User.resource.save($scope.user, function(data){
-            $(".loading").removeClass('active');
+            console.log(data);
             if(data.success){
                 AuthService.storeUserCredentials(data);
                 window.location = '/';
-            }else{
+            }else if(!data.success){
                 toastr.error(data.message, 'Error');
             }
         },function (err) {

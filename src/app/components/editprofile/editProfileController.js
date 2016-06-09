@@ -7,6 +7,10 @@ angular.module('cws').controller('editProfileController', ['$scope','$rootScope'
 
     $scope.USStates = USStates;
 
+    var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
+    $scope.strongRegex = strongRegex;
+
     User.data.$promise.then(function(data){
         if(data.success){
             $scope.user = data.user;

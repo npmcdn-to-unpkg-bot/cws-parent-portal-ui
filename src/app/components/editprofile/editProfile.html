@@ -9,7 +9,7 @@
             <h6 class="primary">Parent/Guardian Name</h6>
         </div>
         <!---->
-        <form name="form" ng-submit="form.$valid && form.$dirty && update()">
+        <form name="form" ng-submit="form.$valid && form.$dirty || form.$valid && form.npassword.$dirty && form.password.$dirty && user.npass != user.cpassword && update()">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -101,7 +101,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="password">Current Password <span class="required-elem">*</span></label>
-                        <input type="password" class="form-control" id="password" placeholder="Current Password"  ng-model="user.password">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Current Password"  ng-model="user.password">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -118,13 +118,14 @@
                 </div>
             </div>
             <!--!form.$valid  &&-->
-            <!--<div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.$valid && form.$submitted || user.npass != user.cpassword && form.$submitted || !form.password.$dirty && form.npassword.$dirty && user.npass != user.cpassword">-->
-                <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>-->
-                <!--<p ng-show="!form.password.$dirty && form.npass.$dirty && user.npass != user.cpassword">Current password is required in able to update the password</p>-->
-                <!--<p ng-show="!form.zip.$valid">Please enter valid zip code!</p>-->
-                <!--<p ng-show="user.cpassword != user.npass">New password do not match!</p>-->
-                <!--<p ng-show="!form.npassword.$valid">New password is too weak!</p>-->
-            <!--</div>-->
+            {{user.cpassword != user.npass}}
+            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.$valid && form.$submitted || user.npass != user.cpassword && form.$submitted || !form.password.$dirty && form.npassword.$dirty && form.$submitted">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <p ng-show="!form.password.$dirty && form.npassword.$dirty">Current password is required in able to update the password</p>
+                <p ng-show="!form.zip.$valid">Please enter valid zip code!</p>
+                <p ng-show="user.cpassword != user.npass">New password do not match!</p>
+                <p ng-show="!form.npassword.$valid">New password is too weak!</p>
+            </div>
             <input type="submit" class="btn btn-primary pull-right shadow" value="Update">
             <a href="#/messages/inbox" ui-sref="messages.inbox" class="btn btn-default pull-right">Cancel</a>
             <div class="clearfix"></div>

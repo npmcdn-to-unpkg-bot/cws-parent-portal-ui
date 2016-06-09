@@ -87,7 +87,7 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             controller: 'fosterAgenciesController',
             authenticate: true
         });
-    
+
     $urlRouterProvider.otherwise(function($injector){
         var $state = $injector.get("$state");
         $state.go('messages.inbox');
