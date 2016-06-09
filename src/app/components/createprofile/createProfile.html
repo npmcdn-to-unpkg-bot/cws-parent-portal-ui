@@ -54,14 +54,12 @@
                 </div>
                 <div class="col-md-6">
 
-                    <!--<div class="form-group">-->
-
-                        <!--<input type="text" class="form-control" id="state" placeholder="Select Sate"  ng-model="user.address.state">-->
-                    <!--</div>-->
                     <div class="form-group">
 
                         <label class="control-label" for="state">State</label>
-                        <select name="state" id="state" class="selectpicker" data-style="btn btn-form-control" data-size="block" ng-model="user.address.state">
+
+
+                        <select name="state" id="state" class="form-control" ng-model="user.address.state">
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -113,8 +111,13 @@
                             <option value="WV">West Virginia</option>
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
+                            <!-- <option ng-repeat="state in USStates" value="{{state.abbreviation}}" ng-selected="state.name == selectedState">{{state.name}}</option> -->
                         </select>
+
+
+
                     </div>
+
 
 
 

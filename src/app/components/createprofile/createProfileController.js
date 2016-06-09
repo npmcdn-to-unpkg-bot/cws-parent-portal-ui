@@ -2,7 +2,6 @@
     'use strict';
 angular.module('cws').controller('createProfileController', ['$scope','User','AuthService','toastr',function($scope, User,AuthService,toastr){
 
-    $('.selectpicker').selectpicker();
 
 
     $scope.user = new User.resource();
