@@ -11,7 +11,12 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
         $scope.conversation = data.conversation;
         console.log(data);
         if(User.data.id != $scope.conversation.sender.id){
-            $scope.replymessage.receiver = $scope.conversation.sender.id;
+
+            // So the user can't reply on their messages.
+            var textarea = $("#replyMsgInput");
+            textarea.attr('disabled','disabled');
+            textarea.attr('placeholder','waiting for response');
+            $(".reply-btns input").attr('disabled','disabled');
         }
 
     });
