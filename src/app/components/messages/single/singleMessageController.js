@@ -7,7 +7,9 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
 
     var messagesWrapper = $(".messages-wrapper");
 
-    $scope.conversation = Conversation.resource.get({id: $stateParams.id}, function(){
+    Conversation.resource.get({id: $stateParams.id}, function(data){
+        $scope.conversation = data.conversation;
+        console.log(data);
         if(User.data.id != $scope.conversation.sender.id){
             $scope.replymessage.receiver = $scope.conversation.sender.id;
         }
@@ -30,7 +32,7 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
     $scope.reply = function(){
         Message.resource.save($scope.replymessage, function(res){
            if(res.success){
-               res.message.sender = User.data;
+               res.message.sender = User.data.user;
                $scope.conversation.messages.push(res.message);
                scrollToBottom();
                $scope.replymessage.content = "";

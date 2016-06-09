@@ -3,11 +3,9 @@
  */
 (function() {
     'use strict';
-angular.module('cws').controller('editProfileController', ['$scope','$rootScope','$http','User','USStates','toastr','ERRORS',function($scope,$rootScope, $http, User,USStates,toastr,ERRORS){
+angular.module('cws').controller('editProfileController', ['$scope','$rootScope','User','USStates','toastr','ERRORS',function($scope, $rootScope, User, USStates, toastr, ERRORS){
 
     $scope.USStates = USStates;
-
-    // console.log(USStates[0]);
 
     User.data.$promise.then(function(data){
         if(data.success){
@@ -25,7 +23,6 @@ angular.module('cws').controller('editProfileController', ['$scope','$rootScope'
                 toastr.success('Your profile updated!', 'Success');
                 $scope.user = update.user;
                 $scope.user.address.zip = Number(update.user.address.zip);
-                $("#cnpassword").val("");
             }else{
                 toastr.error(update.message, 'Error');
             }

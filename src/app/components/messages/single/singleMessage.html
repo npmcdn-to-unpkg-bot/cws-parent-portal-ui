@@ -1,33 +1,18 @@
 <div class="single-message">
     <div class="sec-title">
         <h4 class="pull-left primary">{{conversation.subject}}</h4>
-        <a href="javascript:void(0);" class="btn btn-default btn-wide btn-sm pull-right" ng-click="print()"><i class="icon-print"></i></a>
+        <a href="javascript:void(0);" class="btn btn-default btn-wide btn-sm pull-right" ng-click="print()">
+            <span class="hide">Print</span> <i class="icon-print"></i></a>
         <div class="clearfix"></div>
         <hr>
     </div>
 
     <div class="messages-wrapper" id="messagesscreen">
-        <div class="message-body">
-            <div class="message-body-meta">
-                <div class="user-id">
-                    <div class="circle-img circle-img-xs pull-left">
-                        <img ng-src="{{conversation.image}}" src="http://khns.org/wp-content/uploads/2014/07/profile-icon-400x380.png" alt="">
-                    </div>
-                    {{conversation.initializer.name.first_name + " " + conversation.initializer.name.last_name}}
-                </div>
-                <p class="sm date">{{conversation.date | date: 'yyyy MMM dd h:MMa'}}</p>
-                <div class="clearfix"></div>
-            </div>
-            <div class="message-content">
-                <p>{{conversation.init_message}}</p>
-            </div>
-        </div>
-
         <div class="message-body" ng-repeat="message in conversation.messages">
             <div class="message-body-meta">
                 <div class="user-id">
                     <div class="circle-img circle-img-xs pull-left">
-                        <img ng-src="{{message.sender.image}}" src="http://khns.org/wp-content/uploads/2014/07/profile-icon-400x380.png" alt="">
+                        <img ng-src="{{message.sender.image}}" src="asset/img/profile-icon-400x380.png" alt="">
                     </div>
                     {{message.sender.name.first_name + " " + message.sender.name.last_name}}
                 </div>
@@ -43,7 +28,8 @@
 
     <div class="reply-form">
         <form ng-submit="reply(replymessage)">
-            <textarea class="form-control" id="reply" placeholder="Type to reply" ng-model="replymessage.content" required></textarea>
+            <label class="hide" for="replyMsgInput">Enter replay message</label>
+            <textarea id="replyMsgInput" class="form-control" id="reply" placeholder="Type to reply" ng-model="replymessage.content" required></textarea>
             <div class="reply-btns">
                 <a href="javascript:void(0);" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" title="Popover title" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." class="btn btn-default pull-left"><i class="icon-paperclip"></i> Attach a file</a>
                 <input type="submit" class="btn btn-primary pull-right" value="Reply">
