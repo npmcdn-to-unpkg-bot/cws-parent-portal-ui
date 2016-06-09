@@ -9,7 +9,7 @@
             <h6 class="primary">Parent/Guardian Name</h6>
         </div>
         <!---->
-        <form name="form" ng-submit="form.$valid && form.$dirty || form.$valid && form.npassword.$dirty && form.password.$dirty && user.npass != user.cpassword && update()">
+        <form name="form" ng-submit="form.$valid && form.$dirty && update() || form.$valid && form.npassword.$dirty && form.password.$dirty && user.npass != user.cpassword && update()">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -136,7 +136,7 @@
             </div>
 
             <div class="fieldset">
-                <h6 class="primary">Logging Settigns</h6>
+                <h6 class="primary">Log in Settigns</h6>
             </div>
 
             <div class="row">
@@ -169,10 +169,9 @@
                 </div>
             </div>
             <!--!form.$valid  &&-->
-            {{user.cpassword != user.npass}}
             <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.$valid && form.$submitted || user.npass != user.cpassword && form.$submitted || !form.password.$dirty && form.npassword.$dirty && form.$submitted">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <p ng-show="!form.password.$dirty && form.npassword.$dirty">Current password is required in able to update the password</p>
+                <p ng-show="!form.password.$dirty && form.npassword.$dirty">Current password is required in order to change the password</p>
                 <p ng-show="!form.zip.$valid">Please enter valid zip code!</p>
                 <p ng-show="user.cpassword != user.npass">New password do not match!</p>
                 <p ng-show="!form.npassword.$valid">New password is too weak!</p>
