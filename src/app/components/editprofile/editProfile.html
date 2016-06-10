@@ -9,7 +9,7 @@
             <h6 class="primary">Parent Name</h6>
         </div>
         <!---->
-        <form name="form" ng-submit="form.$valid && form.$dirty && user.cpassword.length == 0 && user.npass.length == 0 && update() || form.$valid && form.npassword.$dirty && form.password.$dirty && user.npass != user.cpassword && update()" novalidategit commit --amend>
+        <form name="form" ng-submit="form.$valid && form.$dirty && update() || form.$valid && form.npassword.$dirty && form.password.$dirty && user.npass != user.cpassword && update()" novalidate>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -128,7 +128,7 @@
                         <div class="col-sm-6">
                             <div class="form-group" ng-class="{'has-danger':!form.zip.$valid && formSubmitted}" >
                                 <label class="control-label" for="zip">Zip Code <span class="required-elem">*</span></label>
-                                <input type="number" class="form-control" name="zip" id="zip" placeholder="Enter zip code"  ng-model="user.address.zip" min="10000" ng-minlength="5" ng-required="true" >
+                                <input type="number" class="form-control" name="zip" id="zip" placeholder="Enter zip code"  ng-model="user.address.zip" ng-minlength="5" ng-required="true" >
                             </div>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="email">Email Address <span class="required-elem">*</span></label>
-                        <input type="text" class="form-control" id="email" placeholder="Enter your email address"  ng-model="user.email" required ng-required="true">
+                        <input type="text" class="form-control" id="email" placeholder="Enter your email address"  ng-model="user.email"  ng-required="true">
                     </div>
                 </div>
 
