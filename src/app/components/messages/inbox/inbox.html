@@ -19,7 +19,7 @@
 
 <div class="list-group list-group-custom inbox-list">
     <h5 class="text-center" ng-if="!conversations.length > 0">No Messages Found</h5>
-    <a ng-repeat="conversation in conversations" href="#/messages/{{conversation.id}}" ui-sref="messages.single({id: conversation.id })" class="list-group-item new">
+    <a ng-repeat="conversation in conversations | orderBy: '-date'" href="#/messages/{{conversation.id}}" ui-sref="messages.single({id: conversation.id })" class="list-group-item new">
         <h6 class="list-group-item-heading">{{getSender(conversation)}}<small class="time">{{conversation.date | date: 'yyyy-MMM-dd h:mma' }}</small></h6>
         <p>{{conversation.subject}}</p>
         <p class="sm">{{conversation.init_message | limitTo: 80}}</p>
