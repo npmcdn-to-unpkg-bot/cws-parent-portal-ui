@@ -16,7 +16,7 @@
                         <label class="control-label" for="fname" >First Name <span class="required-elem">*</span></label>
                         <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name" ng-model="user.name.first_name"  ng-required="true">
                     </div>
-                    <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.$valid && form.$submitted">
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.fname.$valid && form.$submitted">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                         <p ng-show="!form.fname.$valid">Please enter your first name.</p>
                     </div>
@@ -26,7 +26,7 @@
                         <label class="control-label" for="lname">Last Name <span class="required-elem">*</span></label>
                         <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your last name" ng-model="user.name.last_name"  ng-required="true">
                     </div>
-                    <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.$valid && form.$submitted">
+                    <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.lname.$valid && form.$submitted">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                         <p ng-show="!form.lname.$valid">Please enter your last name.</p>
                     </div>
@@ -150,7 +150,7 @@
                                <label class="control-label" for="zip">Zip Code <span class="required-elem">*</span></label>
                                <input type="number" class="form-control" name="zip" id="zip" placeholder="Enter zip code"  ng-model="user.address.zip" min="10000" ng-minlength="5" ng-required="true" >
                            </div>
-                           <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.$valid && form.$submitted">
+                           <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.zip.$valid && form.$submitted">
                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                                <p ng-show="!form.zip.$valid">Please enter a valid zip code.</p>
                            </div>
@@ -172,7 +172,7 @@
                                 <input type="text" name="email" class="form-control" id="email" placeholder="Enter your email address"  ng-model="user.email"  ng-required="true">
                             </div>
 
-                            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.$valid && form.$submitted">
+                            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.email.$valid && form.$submitted">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                                 <p ng-show="!form.email.$dirty">Please enter a valid email. (you@example.com)</p>
                             </div>
@@ -193,7 +193,7 @@
                     </div>
                 </div>
             </div>
-            <div ng-if="form.password.$dirty">
+            <div ng-if="form.password.$dirty || form.$submitted && !form.$valid">
                 <p>Password must be 8 or more characters, and contain at least:</p>
                 <ul>
                     <li class="sm">One lowercase letter</li>
