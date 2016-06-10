@@ -1,5 +1,14 @@
 describe("login", function () {
 
+    // Once cleaner is implemented, create profile will login and we will
+    // need to logout to test this suite
+    /*
+    beforeAll(function() {
+        browser.get('#/');
+        element(by.id('dropProfile')).click();
+        element(by.css('[ng-click="logout()"]')).click();
+        browser.waitForAngular();
+    });*/
 
     beforeEach(function() {
         browser.get('/#');
