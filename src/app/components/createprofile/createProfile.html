@@ -121,7 +121,6 @@
                             <option value="WV">West Virginia</option>
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
-                            <!-- <option ng-repeat="state in USStates" value="{{state.abbreviation}}" ng-selected="state.name == selectedState">{{state.name}}</option> -->
                         </select>
 
 
@@ -148,7 +147,7 @@
                        <div class="col-sm-6">
                            <div class="form-group" ng-class="{'has-danger':!form.zip.$valid && formSubmitted}" >
                                <label class="control-label" for="zip">Zip Code <span class="required-elem">*</span></label>
-                               <input type="number" class="form-control" name="zip" id="zip" placeholder="Enter zip code"  ng-model="user.address.zip" min="10000" ng-minlength="5" ng-required="true" >
+                               <input type="number" class="form-control" name="zip" id="zip" placeholder="Enter zip code"  ng-model="user.address.zip" ng-minlength="5" ng-maxlength="5" ng-required="true" >
                            </div>
                            <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.zip.$valid && form.$submitted">
 
