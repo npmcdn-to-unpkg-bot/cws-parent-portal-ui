@@ -14,13 +14,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="fname" >First Name <span class="required-elem">*</span></label>
-                        <input type="text" class="form-control" id="fname" placeholder="Enter your first name" ng-model="user.name.first_name" required ng-required="true">
+                        <input type="text" class="form-control" name="fname" id="fname" placeholder="Enter your first name" ng-model="user.name.first_name"  ng-required="true">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label" for="lname">Last Name <span class="required-elem">*</span></label>
-                        <input type="text" class="form-control" id="lname" placeholder="Enter your last name" ng-model="user.name.last_name" required ng-required="true">
+                        <input type="text" class="form-control" name="lname" id="lname" placeholder="Enter your last name" ng-model="user.name.last_name"  ng-required="true">
                     </div>
                 </div>
             </div>
@@ -179,8 +179,11 @@
             </div>
             <!--!form.$valid  &&-->
             <div class="alert alert-danger" role="alert" ng-if="!form.$valid && form.$submitted || user.npass != user.cpassword && form.$submitted || !form.password.$dirty && form.npassword.$dirty && form.$submitted">
-                <p ng-show="!form.password.$dirty && form.npassword.$dirty">Current password is required in order to change the password</p>
+                <p ng-show="!form.fname.$valid">Please enter your first name.</p>
+                <p ng-show="!form.lname.$valid">Please enter your last name.</p>
                 <p ng-show="!form.zip.$valid">Please enter a valid zip code.</p>
+
+                <p ng-show="!form.password.$dirty && form.npassword.$dirty">Current password is required in order to change the password</p>
                 <p ng-show="user.cpassword != user.npass">Password and confirmation password must match.</p>
                 <p ng-show="!form.npassword.$valid">Please enter a valid password. See instructions above.</p>
             </div>
