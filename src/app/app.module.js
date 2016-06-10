@@ -29,8 +29,7 @@ var app = angular.module('cws', ['ui.router','ngResource','toastr']);
 
 
             $rootScope.messagestab = next.name.indexOf('messages') != -1;
-
-            console.log($rootScope.messagestab);
+            $('[data-toggle="popover"]').popover('hide');
 
 
             
