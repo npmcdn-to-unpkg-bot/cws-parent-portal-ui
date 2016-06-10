@@ -13,6 +13,11 @@
         });
 
 
+        $(".messagetab").addClass('active');
+
+
+        $('[data-toggle="popover"]').popover();
+
         $scope.getReceiver = function(conversion){
             return conversion.receiver.name.first_name + " " + conversion.receiver.name.last_name;
         };

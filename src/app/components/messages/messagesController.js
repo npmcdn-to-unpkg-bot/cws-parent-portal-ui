@@ -8,6 +8,9 @@ angular.module('cws').controller('messagesController', ['$scope','User','$timeou
     });
 
 
+   
+
+
 
     $timeout(function() {
         $('[data-toggle="popover"]').popover();

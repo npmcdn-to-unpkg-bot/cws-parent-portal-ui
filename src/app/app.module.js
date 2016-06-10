@@ -26,6 +26,14 @@ var app = angular.module('cws', ['ui.router','ngResource','toastr']);
 
     .run(['$rootScope','$state','AuthService','ERRORS',function ($rootScope, $state, AuthService,ERRORS) {
         $rootScope.$on('$stateChangeStart', function (event, next) {
+
+
+            $rootScope.messagestab = next.name.indexOf('messages') != -1;
+
+            console.log($rootScope.messagestab);
+
+
+            
             if (next.authenticate && !AuthService.isAuthenticated()){
                 // User isn’t authenticated
                 event.preventDefault();
@@ -35,6 +43,7 @@ var app = angular.module('cws', ['ui.router','ngResource','toastr']);
                 event.preventDefault();
                 $state.go('messages.inbox', {}, {reload: true});
             }
+
         });
     }])
 

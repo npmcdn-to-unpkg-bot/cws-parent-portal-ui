@@ -163,18 +163,27 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="control-label" for="cnpassword">Confirm New Password</label>
-                        <input type="password" class="form-control" id="cnpassword" ng-pattern="strongRegex" placeholder="Confirm New Password" ng-model="user.cpassword">
+                        <label class="control-label" for="cpassword">Confirm New Password</label>
+                        <input type="password" name="cpassword" class="form-control" id="cpassword" ng-pattern="strongRegex" placeholder="Confirm New Password" ng-model="user.cpassword">
                     </div>
                 </div>
+            </div>
+            <div ng-if="form.password.$dirty || form.npassword.$dirty || form.cpassword.$dirty">
+                <p>Password must be 8 or more characters, and contain at least:</p>
+                <ul>
+                    <li class="sm">One lowercase letter</li>
+                    <li class="sm">One uppercase letter</li>
+                    <li class="sm">One number</li>
+                    <li class="sm">One special character (!@#$%^&*?)</li>
+                </ul>
             </div>
             <!--!form.$valid  &&-->
             <div class="alert alert-danger alert-dismissible" role="alert" ng-if="!form.$valid && form.$submitted || user.npass != user.cpassword && form.$submitted || !form.password.$dirty && form.npassword.$dirty && form.$submitted">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                 <p ng-show="!form.password.$dirty && form.npassword.$dirty">Current password is required in order to change the password</p>
-                <p ng-show="!form.zip.$valid">Please enter valid zip code!</p>
-                <p ng-show="user.cpassword != user.npass">New password do not match!</p>
-                <p ng-show="!form.npassword.$valid">New password is too weak!</p>
+                <p ng-show="!form.zip.$valid">Please enter a valid zip code.</p>
+                <p ng-show="user.cpassword != user.npass">Password and confirmation password must match.</p>
+                <p ng-show="!form.npassword.$valid">Please enter a valid password. See instructions above.</p>
             </div>
             <input type="submit" class="btn btn-primary pull-right shadow" value="Update">
             <a href="#/messages/inbox" ui-sref="messages.inbox" class="btn btn-default pull-right">Cancel</a>

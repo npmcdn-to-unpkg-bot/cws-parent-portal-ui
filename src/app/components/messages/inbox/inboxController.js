@@ -13,6 +13,9 @@ angular.module('cws').controller('inboxController', ['$scope','Conversation',fun
 
 
 
+    $('[data-toggle="popover"]').popover();
+
+
     $scope.getSender = function(conversion){
         return conversion.sender.name.first_name + " " + conversion.sender.name.last_name;
         // console.log(conversion);

@@ -1,6 +1,3 @@
-(function() {
-    'use strict';
-
 var app = angular.module('cws');
 app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.when('/messages', '/messages/inbox');
@@ -86,6 +83,13 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
             templateUrl:'app/components/fosterAgencies/fosterAgencies.html',
             controller: 'fosterAgenciesController',
             authenticate: true
+        })
+        .state('fosterAgency.single',{
+            parent:'fosterAgency',
+            url:'/foster-agency/:id',
+            templateUrl:'app/components/fosterAgency/singleAgency.html',
+            controller: 'singleAgencyController',
+            authenticate: true
         });
 
     $urlRouterProvider.otherwise(function($injector){
@@ -93,4 +97,3 @@ app.config(['$stateProvider','$urlRouterProvider',function($stateProvider, $urlR
         $state.go('messages.inbox');
     });
 }]);
-}());
