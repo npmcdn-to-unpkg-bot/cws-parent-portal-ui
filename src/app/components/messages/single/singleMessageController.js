@@ -11,7 +11,7 @@ angular.module('cws').controller('singleMessageController', ['$scope','$statePar
         // So the user can't reply on their messages.
         var textarea = $("#replyMsgInput");
         textarea.attr('disabled','disabled');
-        textarea.attr('placeholder','waiting for response');
+        textarea.attr('placeholder','Your message has been sent.');
         $(".reply-btns input").attr('disabled','disabled');
     }
 

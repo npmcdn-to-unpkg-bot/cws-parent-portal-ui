@@ -18,10 +18,7 @@ angular.module('cws').controller('inboxController', ['$scope','Conversation',fun
         // console.log(conversion);
     };
 
-    $scope.getReceiver = function(conversion){
-        return conversion.receiver.name.first_name + " " + conversion.receiver.name.last_name;
-    };
-
+  
 
 
 }]);

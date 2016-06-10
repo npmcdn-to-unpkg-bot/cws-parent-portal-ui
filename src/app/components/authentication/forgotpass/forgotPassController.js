@@ -1,8 +1,14 @@
 (function() {
     'use strict';
 angular.module('cws').controller('forgotPassController', ['$scope','$rootScope',function($scope,$rootScope){
-    $rootScope.message = "Hello World";
-    console.log("LoggedForm");
+
+    $('[data-toggle="popover"]').popover();
+
+    $(".fpasswordForm").hover(function(){
+        $('[data-toggle="popover"]').popover('show');
+
+    });
+
 
 
 }]);

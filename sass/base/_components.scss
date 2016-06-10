@@ -43,7 +43,7 @@
     border-radius: 0;
     box-shadow: none;
     &[disabled]{
-      background: lighten($Gray, 20);
+      //background: lighten($Gray, 20);
     }
     &:focus{
       box-shadow: none !important;
@@ -116,7 +116,7 @@
   }
 }
 .nav-tabs{
-  border-bottom: 1px solid $BorderGray;
+  border-bottom: 1px solid $Success;
   margin-bottom: 20px;
   &.tabs-right{
     li{
@@ -127,21 +127,27 @@
         border: none;
         //margin-right: 0 !important;
         text-transform: uppercase;
-        border-bottom: 3px solid $BorderGray;
-        color: $Gray;
+        //border-bottom: 3px solid $BorderGray;
+        //color: $Gray;
+        background:  lighten($BorderGray, 0.5);
+        color: $Dark;
         &:hover, &:focus{
           border: none;
-          border-bottom: 3px solid $BorderGray;
-          background: none ;
+          //border-bottom: 3px solid $BorderGray;
+          //background: lighten($BorderGray, 0.7);
+          //color: $Dark;
         }
 
       }
       &.active a{
-        color: $Primary;
+        color: $Default;
+        background: $Success;
         border: none;
+        border-radius: 5px 5px 0 0;
+        border-bottom: 1px solid $Success;
 
         //font-weight: 600;
-        border-bottom: 3px solid $Primary;
+        //border-bottom: 3px solid $Primary;
 
 
       }
@@ -269,4 +275,11 @@ a.user-id, .user-id{
       left:12px;
     }
   }
+}
+.modal-backdrop{
+  z-index:12;
+}
+#loginErrorModal{
+  background: rgba(0,0,0, 0.6);
+  z-index:3333;
 }

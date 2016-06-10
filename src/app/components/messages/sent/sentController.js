@@ -12,7 +12,15 @@
             $scope.conversations = data.conversations;
         });
 
+
+        $scope.getReceiver = function(conversion){
+            return conversion.receiver.name.first_name + " " + conversion.receiver.name.last_name;
+        };
+
     }]);
+
+
+
 
 
 
