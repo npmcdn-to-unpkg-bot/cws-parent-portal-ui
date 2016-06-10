@@ -17,7 +17,7 @@
 <div class="list-group list-group-custom inbox-list">
 
     <a ng-repeat="conversation in conversations" href="#/messages/{{conversation.id}}" ui-sref="messages.single({id: conversation.id })" class="list-group-item new">
-        <h6 class="list-group-item-heading">{{getReceiver(conversation)}}<small class="time">{{conversation.date | date: 'yyyy-MMM-dd h:mma' }}</small></h6>
+        <h6 class="list-group-item-heading"><small class="time">{{conversation.date | date: 'yyyy-MMM-dd h:mma' }}</small></h6>
         <p>{{conversation.subject}}</p>
         <p class="sm">{{conversation.init_message | limitTo: 80}}</p>
     </a>
